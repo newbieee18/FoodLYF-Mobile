@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TrackOrder">
+
+    <ImageView
+        android:id="@+id/ivNoOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/swipelayout"
+        app:srcCompat="@drawable/no_pending_orders" />
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipelayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
+
+        <ScrollView
+            android:id="@+id/scrollView4"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/txtForDeliveryDesc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="32dp"
+                        android:alpha="0.5"
+                        android:fontFamily="@font/chakra_petch_medium"
+                        android:text="Rider is on the way"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/ivForDelivery"
+                        app:layout_constraintTop_toBottomOf="@+id/txtForDelivery" />
+
+                    <TextView
+                        android:id="@+id/txtForDelivery"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="45dp"
+                        android:layout_marginEnd="32dp"
+                        android:alpha="0.5"
+                        android:fontFamily="@font/chakra_petch_medium"
+                        android:text="For Delivery"
+                        android:textColor="#000000"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/ivProcessingOrder"
+                        app:layout_constraintTop_toBottomOf="@+id/txtOrderPickupDesc" />
+
+                    <TextView
+                        android:id="@+id/txtOrderPickupDesc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="32dp"
+                        android:alpha="0.5"
+                        android:fontFamily="@font/chakra_petch_medium"
+                        android:text="Rider is on the way to store to pickup the order"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/ivOrderPickup"
+                        app:layout_constraintTop_toBottomOf="@+id/txtOrderPickup" />
+
+                    <View
+                        android:id="@+id/vLine4"
+                        android:layout_width="2dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="49dp"
+                        android:alpha="0.5"
+                        android:background="#00ACC1"
+                        app:layout_constraintBottom_toTopOf="@+id/vForDelivery"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/vOrderPickup" />
+
+                    <View
+                        android:id="@+id/vForDelivery"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="115dp"
+                        android:alpha="0.5"
+                        android:background="@drawable/ic_circle"
+                        android:backgroundTint="#00ACC1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/vOrderPickup" />
+
+                    <TextView
+                        android:id="@+id/txtOrderPickup"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="65dp"
+                        android:layout_marginEnd="32dp"
+                        android:alpha="0.5"
+                        android:fontFamily="@font/chakra_petch_medium"
+                        android:text="Order Pickup"
+                        android:textColor="#000000"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/ivOrderPickup"
+                        app:layout_constraintTop_toBottomOf="@+id/txtProcessingOrderDesc" />
+
+                    <TextView
+                        android:id="@+id/txtProcessingOrderDesc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="32dp"
+                        android:alpha="0.5"
+                        android:fontFamily="@font/chakra_petch_medium"
+                        android:text="We are preparing your order"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/ivProcessingOrder"
+                        app:layout_constraintTop_toBottomOf="@+id/txtProcessingOrder" />
+
+                    <View
+                        android:id="@+id/vOrderPickup"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="130dp"
+                        android:alpha="0.5"
+                        android:background="@drawable/ic_circle"
+                        android:backgroundTint="#00ACC1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/vProcessingOrder" />
+
+                    <TextView
+                        android:id="@+id/txtProcessingOrder"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="60dp"
+                        android:layout_marginEnd="32dp"
+                        android:alpha="0.5"
+                        android:fontFamily="@font/chakra_petch_medium"
+                        android:text="Processing Order"
+                        android:textColor="#000000"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/ivProcessingOrder"
+                        app:layout_constraintTop_toBottomOf="@+id/txtOrderConfirmedDesc" />
+
+                    <TextView
+                        android:id="@+id/txtOrderConfirmedDesc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="32dp"
+                        android:alpha="0.5"
+                        android:fontFamily="@font/chakra_petch_medium"
+                        android:text="Your order has been confirmed"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/ivOrderConfirmed"
+                        app:layout_constraintTop_toBottomOf="@+id/txtOrderConfirmed" />
+
+                    <TextView
+                        android:id="@+id/txtOrderConfirmed"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="60dp"
+                        android:layout_marginEnd="32dp"
+                        android:alpha="0.5"
+                        android:fontFamily="@font/chakra_petch_medium"
+                        android:text="Order Confirmed"
+                        android:textColor="#000000"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/ivOrderConfirmed"
+                        app:layout_constraintTop_toBottomOf="@+id/txtOrderPlacedDesc" />
+
+                    <TextView
+                        android:id="@+id/txtOrderPlacedDesc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="32dp"
+                        android:fontFamily="@font/chakra_petch_medium"
+                        android:text="We have received your order"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/ivOrderPlaced"
+                        app:layout_constraintTop_toBottomOf="@+id/txtOrderPlaced" />
+
+                    <View
+                        android:id="@+id/vLine2"
+                        android:layout_width="2dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="49dp"
+                        android:alpha="0.5"
+                        android:background="#00ACC1"
+                        app:layout_constraintBottom_toTopOf="@+id/vProcessingOrder"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/vOrderConfirmed" />
+
+                    <View
+                        android:id="@+id/vLine3"
+                        android:layout_width="2dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="49dp"
+                        android:alpha="0.5"
+                        android:background="#00ACC1"
+                        app:layout_constraintBottom_toTopOf="@+id/vOrderPickup"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/vProcessingOrder" />
+
+                    <View
+                        android:id="@+id/vProcessingOrder"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="110dp"
+                        android:alpha="0.5"
+                        android:background="@drawable/ic_circle"
+                        android:backgroundTint="#00ACC1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/vOrderConfirmed" />
+
+                    <View
+                        android:id="@+id/vOrderConfirmed"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="110dp"
+                        android:alpha="0.5"
+                        android:background="@drawable/ic_circle"
+                        android:backgroundTint="#00ACC1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/vOrderPlaced" />
+
+                    <View
+                        android:id="@+id/vOrderPlaced"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="60dp"
+                        android:background="@drawable/ic_circle"
+                        android:backgroundTint="#00ACC1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/ivProcessingOrder"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_marginStart="50dp"
+                        android:layout_marginTop="50dp"
+                        android:alpha="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/vProcessingOrder"
+                        app:layout_constraintTop_toBottomOf="@+id/ivOrderConfirmed"
+                        app:srcCompat="@drawable/processing_order" />
+
+                    <ImageView
+                        android:id="@+id/ivOrderConfirmed"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginStart="50dp"
+                        android:layout_marginTop="50dp"
+                        android:alpha="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/vOrderConfirmed"
+                        app:layout_constraintTop_toBottomOf="@+id/ivOrderPlaced"
+                        app:srcCompat="@drawable/order_confirmed" />
+
+                    <ImageView
+                        android:id="@+id/ivOrderPlaced"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginStart="50dp"
+                        android:layout_marginTop="20dp"
+                        app:layout_constraintStart_toEndOf="@+id/vOrderPlaced"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/order_placed" />
+
+                    <View
+                        android:id="@+id/vLine1"
+                        android:layout_width="2dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="49dp"
+                        android:alpha="0.5"
+                        android:background="#00ACC1"
+                        app:layout_constraintBottom_toTopOf="@+id/vOrderConfirmed"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/vOrderPlaced" />
+
+                    <TextView
+                        android:id="@+id/txtOrderPlaced"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="32dp"
+                        android:fontFamily="@font/chakra_petch_medium"
+                        android:text="Order Placed"
+                        android:textColor="#000000"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/ivOrderPlaced"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/ivOrderPickup"
+                        android:layout_width="90dp"
+                        android:layout_height="95dp"
+                        android:layout_marginStart="50dp"
+                        android:layout_marginTop="50dp"
+                        android:alpha="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/vOrderPickup"
+                        app:layout_constraintTop_toBottomOf="@+id/ivProcessingOrder"
+                        app:srcCompat="@drawable/rider_pickup" />
+
+                    <ImageView
+                        android:id="@+id/ivForDelivery"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_marginStart="50dp"
+                        android:layout_marginTop="45dp"
+                        android:alpha="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/vForDelivery"
+                        app:layout_constraintTop_toBottomOf="@+id/ivOrderPickup"
+                        app:srcCompat="@drawable/otw_rider" />
+
+                    <ImageView
+                        android:id="@+id/ivQR"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_marginTop="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView10"
+                        tools:srcCompat="@tools:sample/avatars" />
+
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="50dp"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginEnd="50dp"
+                        android:fontFamily="@font/chakra_petch_medium"
+                        android:text="Please provide the QR code to the rider after receiving the order"
+                        android:textAlignment="center"
+                        android:textColor="#000000"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ivForDelivery" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </ScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/arial"
+            android:text="Track Order"
+            android:textColor="#FB8C00"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout7"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView3">
+
+        <TextView
+            android:id="@+id/txtStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#FB8C00"
+            android:fontFamily="@font/chakra_petch_medium"
+            android:text="ORDER STATUS \nORDER PLACED"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtOrderNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#FB8C00"
+            android:fontFamily="@font/chakra_petch_medium"
+            android:text="ORDER NUMBER \n #F010101"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

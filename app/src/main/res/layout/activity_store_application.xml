@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StoreApplication">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0.1"
+        android:scaleType="centerInside"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        app:srcCompat="@drawable/store_image" />
+
+    <LinearLayout
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:elevation="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/store_registration" />
+
+            <View
+                android:id="@+id/view"
+                style="@style/Divider"
+                android:layout_height="1dp"
+                android:background="#00ACC1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:elevation="10dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginRight="10dp"
+                        android:hint="Business Name"
+                        android:textColorHint="#FB8C00"
+                        app:boxBackgroundMode="outline"
+                        app:boxCornerRadiusBottomEnd="20dp"
+                        app:boxStrokeColor="#00ACC1"
+                        app:boxStrokeErrorColor="#00ACC1"
+                        app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
+                        app:hintTextColor="#FB8C00">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etBusinessName"
+                            android:layout_width="match_parent"
+                            android:layout_height="45sp"
+                            android:background="@null"
+                            android:drawableLeft="@drawable/ic_store"
+                            android:drawablePadding="5dp"
+                            android:drawableTint="#000000"
+                            android:fontFamily="@font/chakra_petch_medium"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:singleLine="true"
+                            android:textSize="18sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:hint="Title"
+                        android:textColorHint="#FB8C00"
+                        app:boxBackgroundMode="outline"
+                        app:boxCornerRadiusBottomEnd="20dp"
+                        app:boxStrokeColor="#00ACC1"
+                        app:boxStrokeErrorColor="#FF0000"
+                        app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
+                        app:hintTextColor="#FB8C00">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="45sp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:fontFamily="@font/chakra_petch_medium"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:singleLine="true"
+                            android:textColorLink="#000000"
+                            android:textSize="18sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:hint="Merchant Address"
+                        android:textColorHint="#FB8C00"
+                        app:boxBackgroundMode="outline"
+                        app:boxCornerRadiusBottomEnd="20dp"
+                        app:boxStrokeColor="#00ACC1"
+                        app:boxStrokeErrorColor="#FF0000"
+                        app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
+                        app:hintTextColor="#FB8C00">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etMerchantAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="45sp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:drawableLeft="@drawable/ic_baseline_location_on_24"
+                            android:drawablePadding="5dp"
+                            android:drawableTint="#000000"
+                            android:fontFamily="@font/chakra_petch_medium"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:singleLine="true"
+                            android:textSize="18sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:hint="City"
+                            android:paddingRight="5dp"
+                            android:textColorHint="#FB8C00"
+                            app:boxBackgroundMode="outline"
+                            app:boxCornerRadiusBottomEnd="20dp"
+                            app:boxStrokeColor="#00ACC1"
+                            app:boxStrokeErrorColor="#FF0000"
+                            app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
+                            app:hintTextColor="#FB8C00">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etCity"
+                                android:layout_width="match_parent"
+                                android:layout_height="45sp"
+                                android:layout_weight="1"
+                                android:background="@null"
+                                android:drawableLeft="@drawable/ic_baseline_location_city_24"
+                                android:drawablePadding="5dp"
+                                android:drawableTint="#000000"
+                                android:fontFamily="@font/chakra_petch_medium"
+                                android:maxWidth="100dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:singleLine="true"
+                                android:textSize="18sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:hint="No. of Outlet"
+                            android:paddingLeft="5dp"
+                            android:textColorHint="#FB8C00"
+                            app:boxBackgroundMode="outline"
+                            app:boxCornerRadiusBottomEnd="20dp"
+                            app:boxStrokeColor="#00ACC1"
+                            app:boxStrokeErrorColor="#FF0000"
+                            app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
+                            app:hintTextColor="#FB8C00">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etOutlet"
+                                android:layout_width="match_parent"
+                                android:layout_height="45sp"
+                                android:layout_weight="1"
+                                android:background="@null"
+                                android:fontFamily="@font/chakra_petch_medium"
+                                android:inputType="number"
+                                android:maxWidth="100dp"
+                                android:maxLength="2"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:singleLine="true"
+                                android:textSize="18sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:hint="Name"
+                        android:textColorHint="#FB8C00"
+                        app:boxBackgroundMode="outline"
+                        app:boxCornerRadiusBottomEnd="20dp"
+                        app:boxStrokeColor="#00ACC1"
+                        app:boxStrokeErrorColor="#FF0000"
+                        app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
+                        app:hintTextColor="#FB8C00">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etName"
+                            android:layout_width="match_parent"
+                            android:layout_height="45sp"
+                            android:background="@null"
+                            android:drawableLeft="@drawable/ic_username"
+                            android:drawablePadding="5dp"
+                            android:drawableTint="#000000"
+                            android:fontFamily="@font/chakra_petch_medium"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:singleLine="true"
+                            android:textSize="18sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="Mobile Phone"
+                            android:paddingRight="5dp"
+                            android:textColorHint="#FB8C00"
+                            app:boxBackgroundMode="outline"
+                            app:boxCornerRadiusBottomEnd="20dp"
+                            app:boxStrokeColor="#00ACC1"
+                            app:boxStrokeErrorColor="#FF0000"
+                            app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
+                            app:hintTextColor="#FB8C00">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etMobilePhone"
+                                android:layout_width="match_parent"
+                                android:layout_height="45sp"
+                                android:background="@null"
+                                android:drawableLeft="@drawable/ic_contact"
+                                android:drawablePadding="5dp"
+                                android:drawableTint="#000000"
+                                android:fontFamily="@font/chakra_petch_medium"
+                                android:inputType="phone"
+                                android:maxWidth="50dp"
+                                android:maxLength="11"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:singleLine="true"
+                                android:textSize="18sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="Email Address"
+                            android:textColorHint="#FB8C00"
+                            app:boxBackgroundMode="outline"
+                            app:boxCornerRadiusBottomEnd="20dp"
+                            app:boxStrokeColor="#00ACC1"
+                            app:boxStrokeErrorColor="#FF0000"
+                            app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
+                            app:hintTextColor="#FB8C00">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etEmailAddress"
+                                android:layout_width="match_parent"
+                                android:layout_height="45sp"
+                                android:background="@null"
+                                android:drawableLeft="@drawable/ic_email"
+                                android:drawablePadding="5dp"
+                                android:drawableTint="#000000"
+                                android:fontFamily="@font/chakra_petch_medium"
+                                android:maxWidth="50dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:singleLine="true"
+                                android:textSize="18sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view1"
+                style="@style/Divider"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/chakra_petch_medium"
+                    android:text="Make sure that you have the following requirements before you proceed:"
+                    android:textColor="#000000"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/chakra_petch_medium"
+                    android:text="- DTI Certification"
+                    android:textColor="#000000"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/chakra_petch_medium"
+                    android:text="- Business Permit"
+                    android:textColor="#000000"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/chakra_petch_medium"
+                    android:text="- Business documents (DTI forms), whichever of the following is applicable to your business"
+                    android:textColor="#000000"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/chakra_petch_medium"
+                    android:text="1. Form 9"
+                    android:textColor="#000000"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/chakra_petch_medium"
+                    android:text="2. Form 13"
+                    android:textColor="#000000"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/chakra_petch_medium"
+                    android:text="3. Form 49"
+                    android:textColor="#000000"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/chakra_petch_medium"
+                    android:text="- Valid ID of the Restaurant Owner"
+                    android:textColor="#000000"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/chakra_petch_medium"
+                    android:text="- Halal Certificate"
+                    android:textColor="#000000"
+                    android:textSize="17sp" />
+
+                <CheckBox
+                    android:id="@+id/checkBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/chakra_petch_medium"
+                    android:text="I have the following requirements"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/View2"
+                style="@style/Divider"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/proceed"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/button_bg"
+                android:fontFamily="@font/chakra_petch_medium"
+                android:paddingLeft="70dp"
+                android:paddingRight="70dp"
+                android:text="PROCEED"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:visibility="invisible" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

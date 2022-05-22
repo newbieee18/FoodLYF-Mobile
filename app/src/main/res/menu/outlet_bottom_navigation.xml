@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/dashboardOutlet"
+        android:icon="@drawable/ic_baseline_house_24"
+        android:title="Home" />
+    <item
+        android:id="@+id/acceptOrder"
+        android:icon="@drawable/ic_accept_job"
+        android:title="Orders" />
+    <item
+        android:id="@+id/Account"
+        android:icon="@drawable/ic_username"
+        android:title="Account" />
+
+</menu>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/custom_toast_container"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#FB8C00"
+    android:orientation="horizontal"
+    app:cardBackgroundColor="#FB8C00"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="10dp">
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/input_bg"
+        android:contentDescription="@string/app_name"
+        android:tint="#43A047"
+        app:srcCompat="@drawable/ic_success" />
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="5dp"
+        android:fontFamily="@font/arial"
+        android:text="Successfully Added to Cart"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        android:textColor="#000000" />
+
+</androidx.cardview.widget.CardView>

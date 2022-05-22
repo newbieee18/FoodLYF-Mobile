@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.projectmanagement">
+
+    <queries>
+        <package android:name="com.google.android.gm" />
+        <package android:name="com.DefaultCompany.AstarAlgorithm" />
+        <package android:name="com.DefaultCompany.DijkstraAlgorithm" />
+    </queries>
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-feature
+        android:name="android.hardware.camera2"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-feature
+        android:glEsVersion="0x00030001"
+        android:required="true" />
+
+    <application
+        android:allowBackup="true"
+        android:fitsSystemWindows="true"
+        android:hardwareAccelerated="true"
+        android:icon="@drawable/flove"
+        android:label="FoodLYF"
+        android:largeHeap="true"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:replace="android:label">
+        <activity android:name=".CustomerTransaction"></activity>
+        <activity android:name=".RiderEditInformation" />
+        <activity android:name=".TrackOrder" />
+        <activity
+            android:name=".RiderDeliver"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ViewOrder"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Orders"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".OutletAccount"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".DashboardOutlets"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Burger"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Category"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RiderAccount"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".RiderJob"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".OrderPlacement"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Payment"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".EditOutlet"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".AddOutlet"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".StoreOutlets"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".Cart"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".StoreApplication2"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".AddFoodProduct"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".RiderApplication1"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity android:name=".CustomerRegistration1" />
+        <activity
+            android:name=".CustomerRegistration"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".RiderApplication"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".EditFoodProduct"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".FoodProducts"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".DashboardStore"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".StoreApplication"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".ChooseSignup"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EditInformation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".StoreTab"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Account"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DashboardDriver"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UserRegistration"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".DashboardCustomer"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Login"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity android:name=".SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/map_key" />
+    </application>
+
+</manifest>

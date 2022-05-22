@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "695254634237",
+    "project_id": "foodlyf",
+    "storage_bucket": "foodlyf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:695254634237:android:727e71aca1e733c3893894",
+        "android_client_info": {
+          "package_name": "com.example.projectmanagement"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "695254634237-8sp1c8ci8oo37tr1sslsqj1ioscue4c2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.projectmanagement",
+            "certificate_hash": "52605980ca261652dc7e6dc5021d61f530ba37ba"
+          }
+        },
+        {
+          "client_id": "695254634237-30fqg4s5ji8l2boah2v3dbosrr26ft0a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqaSlmbIYyPTneXMVbW4abVSPKHGTvrJw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "695254634237-30fqg4s5ji8l2boah2v3dbosrr26ft0a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

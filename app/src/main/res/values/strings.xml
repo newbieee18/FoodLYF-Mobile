@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ProjectManagement</string>
+    <string name="error_message_phone">Enter Phone Number</string>
+    <string name="error_message_otp">Enter OTP</string>
+
+    <string name="custom_toast_message">Successfully Added to Cart!</string>
+
+    <string name="mapbox_access_token">pk.eyJ1IjoiZm9vZGx5ZiIsImEiOiJja3RvMGkyM2cwN3htMzFyemlxNjVucTMxIn0.-zyhQunYloq9HNypNIaIVQ</string>
+
+</resources>

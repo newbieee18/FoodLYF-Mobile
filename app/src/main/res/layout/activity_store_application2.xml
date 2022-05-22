@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StoreApplication2">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/store_registration" />
+
+        <View
+            android:id="@+id/view2"
+            style="@style/Divider"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="#00ACC1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtNote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="50dp"
+                android:fontFamily="@font/chakra_petch_medium"
+                android:text="Note: Please upload the needed requirements for verification."
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <View
+                style="@style/Divider"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="15dp" />
+
+            <TextView
+                android:id="@+id/textViewDTI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:fontFamily="@font/chakra_petch_medium"
+                android:text="DTI Certification"
+                android:textColor="#00ACC1"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/ivShowImage"
+                    android:layout_width="200dp"
+                    android:layout_height="180dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/image_border"
+                    android:scaleType="fitXY"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:fontFamily="@font/chakra_petch_light"
+                        android:text="Certificate that gives p privelege to use the business name"
+                        android:textAlignment="center"
+                        android:textStyle="italic" />
+
+                    <ImageView
+                        android:id="@+id/ivCamera"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/button_bg"
+                        android:tint="#FFFFFF"
+                        app:srcCompat="@drawable/ic_camera" />
+
+                    <ImageView
+                        android:id="@+id/ivGallery"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/button_bg"
+                        android:tint="#FFFFFF"
+                        app:srcCompat="@drawable/ic_gallery" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                style="@style/Divider"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:id="@+id/textViewBP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:fontFamily="@font/chakra_petch_medium"
+                android:text="Business Permit"
+                android:textColor="#00ACC1"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/ivShowImage1"
+                    android:layout_width="200dp"
+                    android:layout_height="180dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/image_border"
+                    android:scaleType="fitXY"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:fontFamily="@font/chakra_petch_light"
+                        android:textAlignment="center"
+                        android:textStyle="italic" />
+
+                    <ImageView
+                        android:id="@+id/ivCamera1"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/button_bg"
+                        android:tint="#FFFFFF"
+                        app:srcCompat="@drawable/ic_camera" />
+
+                    <ImageView
+                        android:id="@+id/ivGallery1"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/button_bg"
+                        android:tint="#FFFFFF"
+                        app:srcCompat="@drawable/ic_gallery" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                style="@style/Divider"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="25dp" />
+
+            <TextView
+                android:id="@+id/textViewForm9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:fontFamily="@font/chakra_petch_medium"
+                android:text="Form 9"
+                android:textColor="#00ACC1"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/ivShowImage2"
+                    android:layout_width="200dp"
+                    android:layout_height="180dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/image_border"
+                    android:scaleType="fitXY"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:fontFamily="@font/chakra_petch_light"
+                        android:text="Certificate of Incorporation of Private Company"
+                        android:textAlignment="center"
+                        android:textStyle="italic" />
+
+                    <ImageView
+                        android:id="@+id/ivCamera2"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/button_bg"
+                        android:tint="#FFFFFF"
+                        app:srcCompat="@drawable/ic_camera" />
+
+                    <ImageView
+                        android:id="@+id/ivGallery2"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/button_bg"
+                        android:tint="#FFFFFF"
+                        app:srcCompat="@drawable/ic_gallery" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                style="@style/Divider"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="25dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:fontFamily="@font/chakra_petch_medium"
+                android:text="Form 13"
+                android:textColor="#00ACC1"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/ivShowImage3"
+                    android:layout_width="200dp"
+                    android:layout_height="180dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/image_border"
+                    android:scaleType="fitXY"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:fontFamily="@font/chakra_petch_light"
+                        android:text="Certificate of Incorporation on Change of Name of Company(Optional)"
+                        android:textAlignment="center"
+                        android:textStyle="italic" />
+
+                    <ImageView
+                        android:id="@+id/ivCamera3"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/button_bg"
+                        android:tint="#FFFFFF"
+                        app:srcCompat="@drawable/ic_camera" />
+
+                    <ImageView
+                        android:id="@+id/ivGallery3"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/button_bg"
+                        android:tint="#FFFFFF"
+                        app:srcCompat="@drawable/ic_gallery" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                style="@style/Divider"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="25dp" />
+
+            <View
+                style="@style/Divider"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:id="@+id/textViewForm49"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:fontFamily="@font/chakra_petch_medium"
+                android:text="Form 49"
+                android:textColor="#00ACC1"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/ivShowImage4"
+                    android:layout_width="200dp"
+                    android:layout_height="180dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/image_border"
+                    android:scaleType="fitXY"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:fontFamily="@font/chakra_petch_light"
+                        android:text="Register Of Directors, Managers And Secretaries And Changes Of Particulars"
+                        android:textAlignment="center"
+                        android:textStyle="italic" />
+
+                    <ImageView
+                        android:id="@+id/ivCamera4"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/button_bg"
+                        android:tint="#FFFFFF"
+                        app:srcCompat="@drawable/ic_camera" />
+
+                    <ImageView
+                        android:id="@+id/ivGallery4"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/button_bg"
+                        android:tint="#FFFFFF"
+                        app:srcCompat="@drawable/ic_gallery" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                style="@style/Divider"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="25dp" />
+
+            <TextView
+                android:id="@+id/textViewVId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/chakra_petch_medium"
+                android:text="Valid ID"
+                android:textColor="#00ACC1"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/ivShowImage5"
+                    android:layout_width="200dp"
+                    android:layout_height="180dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/image_border"
+                    android:scaleType="fitXY"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:fontFamily="@font/chakra_petch_light"
+                        android:text="Valid ID of the authorized person for managing products and outlets"
+                        android:textAlignment="center"
+                        android:textStyle="italic" />
+
+                    <ImageView
+                        android:id="@+id/ivCamera5"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/button_bg"
+                        android:tint="#FFFFFF"
+                        app:srcCompat="@drawable/ic_camera" />
+
+                    <ImageView
+                        android:id="@+id/ivGallery5"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/button_bg"
+                        android:tint="#FFFFFF"
+                        app:srcCompat="@drawable/ic_gallery" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                style="@style/Divider"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="25dp" />
+
+            <TextView
+                android:id="@+id/textViewHC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/chakra_petch_medium"
+                android:text="Halal Certificate"
+                android:textColor="#00ACC1"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/ivShowImage6"
+                    android:layout_width="200dp"
+                    android:layout_height="180dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/image_border"
+                    android:scaleType="fitXY"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:fontFamily="@font/chakra_petch_light"
+                        android:textAlignment="center"
+                        android:textStyle="italic" />
+
+                    <ImageView
+                        android:id="@+id/ivCamera6"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/button_bg"
+                        android:tint="#FFFFFF"
+                        app:srcCompat="@drawable/ic_camera" />
+
+                    <ImageView
+                        android:id="@+id/ivGallery6"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/button_bg"
+                        android:tint="#FFFFFF"
+                        app:srcCompat="@drawable/ic_gallery" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/button_bg"
+                android:fontFamily="@font/chakra_petch_medium"
+                android:text="Save"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

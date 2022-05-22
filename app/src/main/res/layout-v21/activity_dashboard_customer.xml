@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/layout_bg"
+    tools:context=".DashboardCustomer">
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="?android:attr/windowBackground"
+        app:itemIconTint="@drawable/selector"
+        app:itemTextColor="@drawable/selector"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/header"
+                        android:layout_width="230dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="50dp"
+                        android:autoSizeMaxTextSize="35sp"
+                        android:autoSizeMinTextSize="20sp"
+                        android:autoSizeStepGranularity="2sp"
+                        android:autoSizeTextType="uniform"
+                        android:text="Hello"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:scaleX="1"
+                        android:scaleY="1.3"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/header"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/iv_cdashboard" />
+
+                    <TextView
+                        android:layout_width="230dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:autoSizeMaxTextSize="22sp"
+                        android:autoSizeMinTextSize="17sp"
+                        android:autoSizeStepGranularity="2sp"
+                        android:autoSizeTextType="uniform"
+                        android:text="Thinking of food? There are 30 restaurants in your area."
+                        android:textSize="17sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/header" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view"
+                style="@style/Divider"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/arial"
+                android:text="Popular"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="20sp"
+                android:autoSizeMaxTextSize="25sp"
+                android:autoSizeStepGranularity="2sp"
+                android:textStyle="bold" />
+
+            <View
+                style="@style/Divider"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="5dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/popularRestaurant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="8dp" />
+
+            <View
+                style="@style/Divider"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/arial"
+                android:text="Categories"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="20sp"
+                android:autoSizeMaxTextSize="25sp"
+                android:autoSizeStepGranularity="2sp"
+                android:textStyle="bold" />
+
+            <View
+                style="@style/Divider"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="5dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="5dp">
+
+                        <ImageView
+                            android:id="@+id/imgBurger"
+                            android:layout_width="wrap_content"
+                            android:layout_height="80dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:onClick="btnBurger"
+                            app:srcCompat="@drawable/burger" />
+
+                        <TextView
+                            android:id="@+id/txtBurger"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginBottom="3dp"
+                            android:onClick="btnBurger"
+                            android:text="Burger"
+                            android:textAlignment="center"
+                            android:textColor="#000000"
+                            android:textSize="17sp"
+                            android:autoSizeTextType="uniform"
+                            android:autoSizeMinTextSize="17sp"
+                            android:autoSizeMaxTextSize="22sp"
+                            android:autoSizeStepGranularity="2sp"
+                            android:textStyle="bold"
+                            tools:ignore="RtlCompat" />
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginLeft="10dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="5dp">
+
+                        <ImageView
+                            android:id="@+id/imgDrinks"
+                            android:layout_width="wrap_content"
+                            android:layout_height="80dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:onClick="btnDrinks"
+                            app:srcCompat="@drawable/drinks" />
+
+                        <TextView
+                            android:id="@+id/txtDrinks"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginBottom="3dp"
+                            android:onClick="btnDrinks"
+                            android:text="Drinks"
+                            android:textAlignment="center"
+                            android:textColor="#000000"
+                            android:textSize="17sp"
+                            android:autoSizeTextType="uniform"
+                            android:autoSizeMinTextSize="17sp"
+                            android:autoSizeMaxTextSize="22sp"
+                            android:autoSizeStepGranularity="2sp"
+                            android:textStyle="bold"
+                            tools:ignore="RtlCompat" />
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginLeft="10dp"
+                        android:onClick="btnChicken"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="5dp">
+
+                        <ImageView
+                            android:id="@+id/imgChicken"
+                            android:layout_width="wrap_content"
+                            android:layout_height="80dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:onClick="btnChicken"
+                            android:scaleX="1"
+                            android:scaleY="0.9"
+                            app:srcCompat="@drawable/chicken" />
+
+                        <TextView
+                            android:id="@+id/txtChicken"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginBottom="3dp"
+                            android:onClick="btnChicken"
+                            android:text="Chicken"
+                            android:textAlignment="center"
+                            android:textColor="#000000"
+                            android:textSize="17sp"
+                            android:autoSizeTextType="uniform"
+                            android:autoSizeMinTextSize="17sp"
+                            android:autoSizeMaxTextSize="22sp"
+                            android:autoSizeStepGranularity="2sp"
+                            android:textStyle="bold"
+                            tools:ignore="RtlCompat" />
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="5dp">
+
+                        <ImageView
+                            android:id="@+id/imgPizza"
+                            android:layout_width="wrap_content"
+                            android:layout_height="80dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:onClick="btnPizza"
+                            android:scaleX="1"
+                            android:scaleY="1.35"
+                            app:srcCompat="@drawable/pizza" />
+
+                        <TextView
+                            android:id="@+id/txtPizza"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginBottom="3dp"
+                            android:onClick="btnPizza"
+                            android:text="Pizza"
+                            android:textAlignment="center"
+                            android:textColor="#000000"
+                            android:textSize="17sp"
+                            android:autoSizeTextType="uniform"
+                            android:autoSizeMinTextSize="17sp"
+                            android:autoSizeMaxTextSize="22sp"
+                            android:autoSizeStepGranularity="2sp"
+                            android:textStyle="bold"
+                            tools:ignore="RtlCompat" />
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginLeft="10dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="5dp">
+
+                        <ImageView
+                            android:id="@+id/imgPasta"
+                            android:layout_width="wrap_content"
+                            android:layout_height="80dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:onClick="btnPasta"
+                            app:srcCompat="@drawable/pasta" />
+
+                        <TextView
+                            android:id="@+id/txtPasta"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginBottom="3dp"
+                            android:onClick="btnPasta"
+                            android:text="Pasta"
+                            android:textAlignment="center"
+                            android:textColor="#000000"
+                            android:textSize="17sp"
+                            android:autoSizeTextType="uniform"
+                            android:autoSizeMinTextSize="17sp"
+                            android:autoSizeMaxTextSize="22sp"
+                            android:autoSizeStepGranularity="2sp"
+                            android:textStyle="bold"
+                            tools:ignore="RtlCompat" />
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginLeft="10dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="5dp">
+
+                        <ImageView
+                            android:id="@+id/imgFries"
+                            android:layout_width="wrap_content"
+                            android:layout_height="75dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginRight="10dp"
+                            android:onClick="btnFries"
+                            android:scaleX="1"
+                            android:scaleY="0.9"
+                            app:srcCompat="@drawable/fries" />
+
+                        <TextView
+                            android:id="@+id/txtFries"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginBottom="3dp"
+                            android:onClick="btnFries"
+                            android:text="Fries"
+                            android:textAlignment="center"
+                            android:textColor="#000000"
+                            android:textSize="17sp"
+                            android:autoSizeTextType="uniform"
+                            android:autoSizeMinTextSize="17sp"
+                            android:autoSizeMaxTextSize="22sp"
+                            android:autoSizeStepGranularity="2sp"
+                            android:textStyle="bold"
+                            tools:ignore="RtlCompat" />
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
