@@ -51,7 +51,7 @@ public class CustomerTransaction extends AppCompatActivity {
 
         phoneNumber = getIntent().getExtras().getString("number");
 
-        deliveredOrders = findViewById(R.id.orderList);
+        deliveredOrders = findViewById(R.id.deliveredOrders);
         deliveredList = new ArrayList<>();
 
         getOrders();
@@ -70,7 +70,7 @@ public class CustomerTransaction extends AppCompatActivity {
 
     private void getOrders() {
 
-        String url = Config.ORDER_URL1 + phoneNumber;
+        String url = "http://192.168.254.109/fadSystem/deliveredOrders.php?phone=" + phoneNumber;
         StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -91,7 +91,7 @@ public class CustomerTransaction extends AppCompatActivity {
     }
 
     private void showJSONS(String response) {
-        Integer order_id;
+        Integer order_id = 0;
         String product_name = "";
         String customer_phone = "";
         String customer_name = "";
@@ -109,24 +109,16 @@ public class CustomerTransaction extends AppCompatActivity {
 
         try {
             JSONObject jsonObject = new JSONObject(response);
-            JSONArray result = jsonObject.getJSONArray(Config.JSON_ARRAY91);
+            JSONArray result = jsonObject.getJSONArray("result");
 
 
             for(int i=0; i<result.length(); i++) {
 
                 JSONObject orders = result.getJSONObject(i);
-                product_name = orders.getString(Config.ORDER_PRODUCT_NAME);
-                customer_phone = orders.getString(Config.ORDER_CUSTOMER_PHONE);
-                customer_name = orders.getString(Config.ORDER_CUSTOMER_NAME);
-                customer_address = orders.getString(Config.ORDER_CUSTOMER_ADDRESS);
-                order_id = orders.getInt(Config.ORDER_ID);
-                subtotal = orders.getInt(Config.ORDER_SUBTOTAL);
-                quantity = orders.getInt(Config.ORDER_QUANTITY);
-                total = orders.getDouble(Config.ORDER_TOTAL);
-                latitude = orders.getString(Config.ORDER_CUSTOMER_LATITUDE);
-                longitude = orders.getString(Config.ORDER_CUSTOMER_LONGITUDE);
-                store_name = orders.getString(Config.ORDER_STORE_NAME);
-                distance = orders.getDouble(Config.ORDER_DISTANCE);
+                product_name = orders.getString("product_name");
+                subtotal = orders.getInt("subtotal");
+                quantity = orders.getInt("quantity");
+                total = orders.getDouble("total");
 
                 deliveredList.add(new OrderList(order_id, customer_phone, customer_name, customer_address, product_name, quantity, subtotal, latitude, longitude, store_name, branch_name, branch_latitude, branch_longitude, total, distance));
 

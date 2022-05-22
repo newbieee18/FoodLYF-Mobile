@@ -104,10 +104,10 @@ public class TrackOrder extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                finish();
                 overridePendingTransition( 0, 0);
                 getIntent().addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(getIntent());
+                finish();
                 overridePendingTransition( 0, 0);
             }
         },60000);

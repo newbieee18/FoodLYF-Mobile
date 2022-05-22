@@ -46,6 +46,8 @@ public class Category extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
+        String phoneNumber = getIntent().getExtras().getString("number");
+
         final Loading loading = new Loading(Category.this);
         loading.startLoading();
 
