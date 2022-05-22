@@ -1,7 +1,9 @@
 package com.example.projectmanagement;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 
 import android.Manifest;
@@ -32,6 +34,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.kosalgeek.android.photoutil.MainActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,7 +43,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Payment extends AppCompatActivity {
+public class Payment extends AppCompatActivity implements LocationListener {
 
 
     TextView productName, total, subTotal, deliveryFee, txtAddress;
@@ -87,65 +90,20 @@ public class Payment extends AppCompatActivity {
         cartList = new ArrayList<>();
         getItems();
         getCustomerDetails();
+        if (ContextCompat.checkSelfPermission(Payment.this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(Payment.this, new String[]{
+                    Manifest.permission.ACCESS_FINE_LOCATION
+            }, 100);
+        }
+
 
         placeOrder = findViewById(R.id.placeOrder);
         placeOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                final String phone, store_name, cLatitude, cLongitude, sug, cAddress, dFee, finaltotal;
-                finaltotal = finalTotal;
-                dFee = String.valueOf(fee);
-                phone = phoneNumber;
-                store_name = sName;
-                cAddress = txtAddress.getText().toString();
-                sug = suggestion.getText().toString();
-
-                cLatitude = String.valueOf(latitude);
-                cLongitude = String.valueOf(longitude);
-
-                if (!phone.equals("") && !cAddress.equals("") && !store_name.equals("") && !cLatitude.equals("") && !cLongitude.equals("") && (!sug.equals("") || sug.equals("")) && !dFee.equals("") && !finaltotal.equals("")){
-                    Handler handler = new Handler();
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-
-                            String[] field = new String[8];
-                            field[0] = "phone";
-                            field[1] = "customer_address";
-                            field[2] = "store_name";
-                            field[3] = "latitude";
-                            field[4] = "longitude";
-                            field[5] = "suggestion";
-                            field[6] = "delivery_fee";
-                            field[7] = "total";
-
-                            String[] data = new String[8];
-                            data[0] = phone;
-                            data[1] = cAddress;
-                            data[2] = store_name;
-                            data[3] = cLatitude;
-                            data[4] = cLongitude;
-                            data[5] = sug;
-                            data[6] = dFee;
-                            data[7] = finaltotal;
-
-                            PutData putData = new PutData("http://192.168.254.109/fadSystem/insert_orders.php", "POST", field, data);
-                            if (putData.startPut()) {
-                                if (putData.onComplete()) {
-                                    String result = putData.getResult();
-                                    if (result.equals("")) {
-                                        Intent orderPlacement = new Intent(getApplicationContext(), OrderPlacement.class);
-                                        orderPlacement.putExtra("number", phoneNumber);
-                                        startActivity(orderPlacement);
-                                    } else {
-                                        Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            }
-                        }
-                    });
-                }
+                getLocation();
 
 
             }
@@ -159,30 +117,55 @@ public class Payment extends AppCompatActivity {
             }
         });
 
-        mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, LOCATION_REFRESH_TIME,
-                LOCATION_REFRESH_DISTANCE, mLocationListener);
+
+//
+//        mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+//
+//        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//            // TODO: Consider calling
+//            //    ActivityCompat#requestPermissions
+//            // here to request the missing permissions, and then overriding
+//            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+//            //                                          int[] grantResults)
+//            // to handle the case where the user grants the permission. See the documentation
+//            // for ActivityCompat#requestPermissions for more details.
+//            return;
+//        }
+//        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, LOCATION_REFRESH_TIME,
+//                LOCATION_REFRESH_DISTANCE, mLocationListener);
 
     }
 
-    private final LocationListener mLocationListener = new LocationListener() {
-        @Override
-        public void onLocationChanged(final Location location) {
-            latitude = location.getLatitude();
-            longitude = location.getLongitude();
+    private void getLocation() {
+
+        try {
+            mLocationManager = (LocationManager) getApplicationContext().getSystemService(LOCATION_SERVICE);
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return;
+            }
+            mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 5, Payment.this);
+
+        }catch (Exception e){
+            e.printStackTrace();
         }
-    };
+
+    }
+
+//    private final LocationListener mLocationListener = new LocationListener() {
+//        @Override
+//        public void onLocationChanged(final Location location) {
+//            latitude = location.getLatitude();
+//            longitude = location.getLongitude();
+//        }
+//    };
 
     private void getItems() {
 
@@ -445,4 +428,90 @@ public class Payment extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onLocationChanged(@NonNull Location location) {
+
+        latitude = location.getLatitude();
+        longitude = location.getLongitude();
+
+        final String phone, store_name, cLatitude, cLongitude, sug, cAddress, dFee, finaltotal;
+        finaltotal = finalTotal;
+        dFee = String.valueOf(fee);
+        phone = phoneNumber;
+        store_name = sName;
+        cAddress = txtAddress.getText().toString();
+        sug = suggestion.getText().toString();
+
+        cLatitude = String.valueOf(latitude);
+        cLongitude = String.valueOf(longitude);
+
+        if (!phone.equals("") && !cAddress.equals("") && !store_name.equals("") && !cLatitude.equals("") && !cLongitude.equals("") && (!sug.equals("") || sug.equals("")) && !dFee.equals("") && !finaltotal.equals("")) {
+            Handler handler = new Handler();
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+
+                    String[] field = new String[8];
+                    field[0] = "phone";
+                    field[1] = "customer_address";
+                    field[2] = "store_name";
+                    field[3] = "latitude";
+                    field[4] = "longitude";
+                    field[5] = "suggestion";
+                    field[6] = "delivery_fee";
+                    field[7] = "total";
+
+                    String[] data = new String[8];
+                    data[0] = phone;
+                    data[1] = cAddress;
+                    data[2] = store_name;
+                    data[3] = cLatitude;
+                    data[4] = cLongitude;
+                    data[5] = sug;
+                    data[6] = dFee;
+                    data[7] = finaltotal;
+
+                    PutData putData = new PutData("http://192.168.254.109/fadSystem/insert_orders.php", "POST", field, data);
+                    if (putData.startPut()) {
+                        if (putData.onComplete()) {
+                            String result = putData.getResult();
+                            if (result.equals("")) {
+                                final Loading loading = new Loading(Payment.this);
+                                loading.startLoading();
+
+                                Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        loading.DismissLoading();
+                                    }
+                                }, 5000);
+                                Intent orderPlacement = new Intent(getApplicationContext(), OrderPlacement.class);
+                                orderPlacement.putExtra("number", phoneNumber);
+                                startActivity(orderPlacement);
+                            } else {
+                                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(@NonNull String provider) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(@NonNull String provider) {
+
+    }
 }

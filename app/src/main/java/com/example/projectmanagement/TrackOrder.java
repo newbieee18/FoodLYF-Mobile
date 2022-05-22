@@ -43,10 +43,10 @@ public class TrackOrder extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
+        finish();
         Intent account = new Intent(getApplicationContext(), Account.class);
         account.putExtra("number", phoneNumber);
         startActivity(account);
-        finish();
     }
 
     @Override
@@ -101,16 +101,16 @@ public class TrackOrder extends AppCompatActivity {
             }
         });
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                overridePendingTransition( 0, 0);
-                getIntent().addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                startActivity(getIntent());
-                finish();
-                overridePendingTransition( 0, 0);
-            }
-        },60000);
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                overridePendingTransition( 0, 0);
+//                getIntent().addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+//                startActivity(getIntent());
+//                finish();
+//                overridePendingTransition( 0, 0);
+//            }
+//        },60000);
 
     }
 

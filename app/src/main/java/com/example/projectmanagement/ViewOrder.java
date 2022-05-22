@@ -104,6 +104,9 @@ public class ViewOrder extends AppCompatActivity {
                                                         final String status = "Order Pickup";
                                                         final String customer_phone = customerPhone;
                                                         final String branch_phone = phoneNumber;
+                                                        final String rLatitude = "";
+                                                        final String rLongitude = "";
+                                                        final String rPhone = "";
 
                                                         if (!status.equals("")) {
                                                             Handler handler = new Handler();
@@ -111,15 +114,21 @@ public class ViewOrder extends AppCompatActivity {
                                                                 @Override
                                                                 public void run() {
 
-                                                                    String[] field = new String[3];
+                                                                    String[] field = new String[6];
                                                                     field[0] = "status";
                                                                     field[1] = "customer_phone";
                                                                     field[2] = "branch_phone";
+                                                                    field[3] = "rider_latitude";
+                                                                    field[4] = "rider_longitude";
+                                                                    field[5] = "rider_phone";
 
-                                                                    String[] data = new String[3];
+                                                                    String[] data = new String[6];
                                                                     data[0] = status;
                                                                     data[1] = customer_phone;
                                                                     data[2] = branch_phone;
+                                                                    data[3] = rLatitude;
+                                                                    data[4] = rLongitude;
+                                                                    data[5] = rPhone;
 
                                                                     PutData putData = new PutData("http://192.168.254.109/fadSystem/update_order.php", "POST", field, data);
                                                                     if (putData.startPut()) {

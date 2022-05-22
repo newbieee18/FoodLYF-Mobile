@@ -2,14 +2,20 @@ package com.example.projectmanagement;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.res.ResourcesCompat;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -60,26 +66,30 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 
-public class RiderDeliver extends AppCompatActivity implements PermissionsListener, OnMapReadyCallback {
+public class RiderDeliver extends AppCompatActivity implements LocationListener {
 
     String phoneNumber, customerPhone;
+    double latitude, longitude;
     TextView total, cName, cPhone, suggestion, branchDetails, cLink;
     TableLayout tableLayout;
     Button acceptOrder, btnContinue;
     Double rLongitude, rLatitude, bLatitude, bLongitude, cLatitude, cLongitude;
 
     //MAPBOX
-    Point origin, origin1;
-    Point destination, destination1;
-    MapboxNavigation navigation;
-    private MapView mapView;
-    private MapboxMap mapboxMap;
-    private PermissionsManager permissionsManager;
-    private static final long DEFAULT_INTERVAL_IN_MILLISECONDS = 1000L;
-    private static final long DEFAULT_MAX_WAIT_TIME = DEFAULT_INTERVAL_IN_MILLISECONDS * 5;
-    private LocationEngine locationEngine;
-    private RiderDeliver.LocationChangeListeningActivityLocationCallback callback =
-            new RiderDeliver.LocationChangeListeningActivityLocationCallback(this);
+//    Point origin, origin1;
+//    Point destination, destination1;
+//    MapboxNavigation navigation;
+//    private MapView mapView;
+//    private MapboxMap mapboxMap;
+//    private PermissionsManager permissionsManager;
+//    private static final long DEFAULT_INTERVAL_IN_MILLISECONDS = 1000L;
+//    private static final long DEFAULT_MAX_WAIT_TIME = DEFAULT_INTERVAL_IN_MILLISECONDS * 5;
+//    private LocationEngine locationEngine;
+//    private RiderDeliver.LocationChangeListeningActivityLocationCallback callback =
+//            new RiderDeliver.LocationChangeListeningActivityLocationCallback(this);
+
+
+    protected LocationManager mLocationManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,19 +110,19 @@ public class RiderDeliver extends AppCompatActivity implements PermissionsListen
 
         getItems();
 
-        //MAPBOX
-        navigation = new MapboxNavigation(this, getString(R.string.mapbox_access_token));
-        Mapbox.getInstance(this, getString(R.string.mapbox_access_token));
-        mapView = (MapView) findViewById(R.id.mapView);
-        mapView.onCreate(savedInstanceState);
-        mapView.onStart();
-        mapView.getMapAsync(RiderDeliver.this::onMapReady);
+//        //MAPBOX
+//        navigation = new MapboxNavigation(this, getString(R.string.mapbox_access_token));
+//        Mapbox.getInstance(this, getString(R.string.mapbox_access_token));
+//        mapView = (MapView) findViewById(R.id.mapView);
+//        mapView.onCreate(savedInstanceState);
+//        mapView.onStart();
+//        mapView.getMapAsync(RiderDeliver.this::onMapReady);
 
         acceptOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                getRoute();
+                //getRoute();
                 acceptOrder.setVisibility(View.INVISIBLE);
                 btnContinue.setVisibility(View.VISIBLE);
 
@@ -123,7 +133,8 @@ public class RiderDeliver extends AppCompatActivity implements PermissionsListen
             @Override
             public void onClick(View v) {
 
-                getRoute1();
+                //getRoute1();
+                getLocation();
 
             }
         });
@@ -285,259 +296,353 @@ public class RiderDeliver extends AppCompatActivity implements PermissionsListen
 
     }
 
-    //MAPBOX
-    private void getRoute(){
+    public void getLocation(){
+        try {
+            mLocationManager = (LocationManager) getApplicationContext().getSystemService(LOCATION_SERVICE);
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return;
+            }
+            mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 5, RiderDeliver.this);
 
-        NavigationRoute.builder(getApplicationContext())
-                .accessToken(getString(R.string.mapbox_access_token))
-                .origin(origin)
-                .destination(destination)
-                .build()
-                .getRoute(new Callback<DirectionsResponse>() {
-                    @Override
-                    public void onResponse(Call<DirectionsResponse> call, retrofit2.Response<DirectionsResponse> response) {
-                        if(response.body() == null){
-                            Toast.makeText(getApplicationContext(), "No routes found!", Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-                        else if(response.body().routes().size() < 1){
-                            Toast.makeText(getApplicationContext(), "No routes found.!", Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-                        DirectionsRoute route = response.body().routes().get(0);
-                        NavigationLauncherOptions options = NavigationLauncherOptions.builder()
-                                .directionsRoute(route)
-                                .shouldSimulateRoute(true)
-                                .build();
-                        NavigationLauncher.startNavigation(RiderDeliver.this, options);
-
-                    }
-
-                    @Override
-                    public void onFailure(Call<DirectionsResponse> call, Throwable t) {
-                        Toast.makeText(getApplicationContext(), "error" + t.toString(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-    }
-
-    private void getRoute1(){
-
-        NavigationRoute.builder(getApplicationContext())
-                .accessToken(getString(R.string.mapbox_access_token))
-                .origin(origin1)
-                .destination(destination1)
-                .build()
-                .getRoute(new Callback<DirectionsResponse>() {
-                    @Override
-                    public void onResponse(Call<DirectionsResponse> call, retrofit2.Response<DirectionsResponse> response) {
-                        if(response.body() == null){
-                            Toast.makeText(getApplicationContext(), "No routes found!", Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-                        else if(response.body().routes().size() < 1){
-                            Toast.makeText(getApplicationContext(), "No routes found.!", Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-                        DirectionsRoute route = response.body().routes().get(0);
-                        NavigationLauncherOptions options = NavigationLauncherOptions.builder()
-                                .directionsRoute(route)
-                                .shouldSimulateRoute(true)
-                                .build();
-                        NavigationLauncher.startNavigation(RiderDeliver.this, options);
-
-                    }
-
-                    @Override
-                    public void onFailure(Call<DirectionsResponse> call, Throwable t) {
-                        Toast.makeText(getApplicationContext(), "error" + t.toString(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-    }
-
-    @SuppressWarnings( {"MissingPermission"})
-    private void enableLocationComponent(@NonNull Style loadedMapStyle) {
-        // Check if permissions are enabled and if not request
-        if (PermissionsManager.areLocationPermissionsGranted(this)) {
-
-            // Get an instance of the component
-            LocationComponent locationComponent = mapboxMap.getLocationComponent();
-
-            // Set the LocationComponent activation options
-            LocationComponentActivationOptions locationComponentActivationOptions =
-                    LocationComponentActivationOptions.builder(this, loadedMapStyle)
-                            .useDefaultLocationEngine(false)
-                            .build();
-
-            // Activate with the LocationComponentActivationOptions object
-            locationComponent.activateLocationComponent(locationComponentActivationOptions);
-
-            // Enable to make component visible
-            locationComponent.setLocationComponentEnabled(true);
-
-            // Set the component's camera mode
-            locationComponent.setCameraMode(CameraMode.TRACKING);
-
-            // Set the component's render mode
-            locationComponent.setRenderMode(RenderMode.COMPASS);
-
-            initLocationEngine();
-        } else {
-            permissionsManager = new PermissionsManager(this);
-            permissionsManager.requestLocationPermissions(this);
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 
-    @SuppressLint("MissingPermission")
-    private void initLocationEngine() {
-        locationEngine = LocationEngineProvider.getBestLocationEngine(this);
-
-        LocationEngineRequest request = new LocationEngineRequest.Builder(DEFAULT_INTERVAL_IN_MILLISECONDS)
-                .setPriority(LocationEngineRequest.PRIORITY_HIGH_ACCURACY)
-                .setMaxWaitTime(DEFAULT_MAX_WAIT_TIME).build();
-
-        locationEngine.requestLocationUpdates(request, callback, getMainLooper());
-        locationEngine.getLastLocation(callback);
-
-    }
-
-    @SuppressLint("MissingSuperCall")
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        permissionsManager.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
+    public void onLocationChanged(@NonNull Location location) {
+        latitude = location.getLatitude();
+        longitude = location.getLongitude();
 
-    @Override
-    public void onExplanationNeeded(List<String> permissionsToExplain) {
-        Toast.makeText(this, "Permission Denied", Toast.LENGTH_LONG).show();
-    }
+        final String rLatitude, rLongitude, status, customer_phone, rider_phone;
 
-    @Override
-    public void onPermissionResult(boolean granted) {
-        if (granted) {
-            mapboxMap.getStyle(new Style.OnStyleLoaded() {
+        status = "Accepted by Rider";
+        rLatitude = String.valueOf(latitude);
+        rLongitude = String.valueOf(longitude);
+        customer_phone = getIntent().getExtras().getString("customerPhone");;
+        rider_phone = getIntent().getExtras().getString("number");
+
+        if (!rLatitude.equals("") && !rLongitude.equals("") && !status.equals("") && !rider_phone.equals("")) {
+            Handler handler = new Handler();
+            handler.post(new Runnable() {
                 @Override
-                public void onStyleLoaded(@NonNull Style style) {
-                    enableLocationComponent(style);
+                public void run() {
+
+                    String[] field = new String[5];
+                    field[0] = "rider_latitude";
+                    field[1] = "rider_longitude";
+                    field[2] = "status";
+                    field[3] = "customer_phone";
+                    field[4] = "rider_phone";
+
+                    String[] data = new String[5];
+                    data[0] = rLatitude;
+                    data[1] = rLongitude;
+                    data[2] = status;
+                    data[3] = customer_phone;
+                    data[4] = rider_phone;
+
+                    PutData putData = new PutData("http://192.168.254.109/fadSystem/update_order1.php", "POST", field, data);
+                    if (putData.startPut()) {
+                        if (putData.onComplete()) {
+                            String result = putData.getResult();
+                            if (result.equals("")) {
+                                final Loading loading = new Loading(RiderDeliver.this);
+                                loading.startLoading();
+
+                                Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        loading.DismissLoading();
+                                    }
+                                }, 5000);
+                                Toast.makeText(getApplicationContext(), "Success!", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
                 }
             });
-        } else {
-            Toast.makeText(this, "Permission Granted", Toast.LENGTH_LONG).show();
-            finish();
         }
     }
 
     @Override
-    public void onMapReady(@NonNull final MapboxMap mapboxMap) {
-        this.mapboxMap = mapboxMap;
+    public void onStatusChanged(String provider, int status, Bundle extras) {
 
-        mapboxMap.setStyle(Style.TRAFFIC_DAY,
-                new Style.OnStyleLoaded() {
-                    @Override public void onStyleLoaded(@NonNull Style style) {
-                        enableLocationComponent(style);
-                    }
-                });
-    }
-
-    private class LocationChangeListeningActivityLocationCallback
-            implements LocationEngineCallback<LocationEngineResult> {
-
-        private final WeakReference<RiderDeliver> activityWeakReference;
-
-        LocationChangeListeningActivityLocationCallback(RiderDeliver activity) {
-            this.activityWeakReference = new WeakReference<>(activity);
-        }
-
-        /**
-         * The LocationEngineCallback interface's method which fires when the device's location has changed.
-         *
-         * @param result the LocationEngineResult object which has the last known location within it.
-         */
-        @Override
-        public void onSuccess(LocationEngineResult result) {
-            RiderDeliver activity = activityWeakReference.get();
-
-            if (activity != null) {
-                Location location = result.getLastLocation();
-
-                if (location == null) {
-                    return;
-                }
-
-                // Pass the new location to the Maps SDK's LocationComponent
-                if (activity.mapboxMap != null && result.getLastLocation() != null) {
-                    activity.mapboxMap.getLocationComponent().forceLocationUpdate(result.getLastLocation());
-                    rLatitude = location.getLatitude();
-                    rLongitude = location.getLongitude();
-                    origin = Point.fromLngLat(rLongitude, rLatitude);
-                }
-            }
-        }
-
-        /**
-         * The LocationEngineCallback interface's method which fires when the device's location can't be captured
-         *
-         * @param exception the exception message
-         */
-        @Override
-        public void onFailure(@NonNull Exception exception) {
-            RiderDeliver activity = activityWeakReference.get();
-            if (activity != null) {
-                Toast.makeText(activity, exception.getLocalizedMessage(),
-                        Toast.LENGTH_SHORT).show();
-            }
-        }
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        mapView.onStart();
+    public void onProviderEnabled(@NonNull String provider) {
+
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        mapView.onResume();
+    public void onProviderDisabled(@NonNull String provider) {
+
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        mapView.onPause();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        mapView.onStop();
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        mapView.onSaveInstanceState(outState);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        // Prevent leaks
-        if (locationEngine != null) {
-            locationEngine.removeLocationUpdates(callback);
-        }
-        mapView.onDestroy();
-        navigation.onDestroy();
-    }
-
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-        mapView.onLowMemory();
-    }
-
-    //END OF MAPBOX
+//    //MAPBOX
+//    private void getRoute(){
+//
+//        NavigationRoute.builder(getApplicationContext())
+//                .accessToken(getString(R.string.mapbox_access_token))
+//                .origin(origin)
+//                .destination(destination)
+//                .build()
+//                .getRoute(new Callback<DirectionsResponse>() {
+//                    @Override
+//                    public void onResponse(Call<DirectionsResponse> call, retrofit2.Response<DirectionsResponse> response) {
+//                        if(response.body() == null){
+//                            Toast.makeText(getApplicationContext(), "No routes found!", Toast.LENGTH_SHORT).show();
+//                            return;
+//                        }
+//                        else if(response.body().routes().size() < 1){
+//                            Toast.makeText(getApplicationContext(), "No routes found.!", Toast.LENGTH_SHORT).show();
+//                            return;
+//                        }
+//                        DirectionsRoute route = response.body().routes().get(0);
+//                        NavigationLauncherOptions options = NavigationLauncherOptions.builder()
+//                                .directionsRoute(route)
+//                                .shouldSimulateRoute(true)
+//                                .build();
+//                        NavigationLauncher.startNavigation(RiderDeliver.this, options);
+//
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<DirectionsResponse> call, Throwable t) {
+//                        Toast.makeText(getApplicationContext(), "error" + t.toString(), Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//
+//    }
+//
+//    private void getRoute1(){
+//
+//        NavigationRoute.builder(getApplicationContext())
+//                .accessToken(getString(R.string.mapbox_access_token))
+//                .origin(origin1)
+//                .destination(destination1)
+//                .build()
+//                .getRoute(new Callback<DirectionsResponse>() {
+//                    @Override
+//                    public void onResponse(Call<DirectionsResponse> call, retrofit2.Response<DirectionsResponse> response) {
+//                        if(response.body() == null){
+//                            Toast.makeText(getApplicationContext(), "No routes found!", Toast.LENGTH_SHORT).show();
+//                            return;
+//                        }
+//                        else if(response.body().routes().size() < 1){
+//                            Toast.makeText(getApplicationContext(), "No routes found.!", Toast.LENGTH_SHORT).show();
+//                            return;
+//                        }
+//                        DirectionsRoute route = response.body().routes().get(0);
+//                        NavigationLauncherOptions options = NavigationLauncherOptions.builder()
+//                                .directionsRoute(route)
+//                                .shouldSimulateRoute(true)
+//                                .build();
+//                        NavigationLauncher.startNavigation(RiderDeliver.this, options);
+//
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<DirectionsResponse> call, Throwable t) {
+//                        Toast.makeText(getApplicationContext(), "error" + t.toString(), Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//
+//    }
+//
+//    @SuppressWarnings( {"MissingPermission"})
+//    private void enableLocationComponent(@NonNull Style loadedMapStyle) {
+//        // Check if permissions are enabled and if not request
+//        if (PermissionsManager.areLocationPermissionsGranted(this)) {
+//
+//            // Get an instance of the component
+//            LocationComponent locationComponent = mapboxMap.getLocationComponent();
+//
+//            // Set the LocationComponent activation options
+//            LocationComponentActivationOptions locationComponentActivationOptions =
+//                    LocationComponentActivationOptions.builder(this, loadedMapStyle)
+//                            .useDefaultLocationEngine(false)
+//                            .build();
+//
+//            // Activate with the LocationComponentActivationOptions object
+//            locationComponent.activateLocationComponent(locationComponentActivationOptions);
+//
+//            // Enable to make component visible
+//            locationComponent.setLocationComponentEnabled(true);
+//
+//            // Set the component's camera mode
+//            locationComponent.setCameraMode(CameraMode.TRACKING);
+//
+//            // Set the component's render mode
+//            locationComponent.setRenderMode(RenderMode.COMPASS);
+//
+//            initLocationEngine();
+//        } else {
+//            permissionsManager = new PermissionsManager(this);
+//            permissionsManager.requestLocationPermissions(this);
+//        }
+//    }
+//
+//    @SuppressLint("MissingPermission")
+//    private void initLocationEngine() {
+//        locationEngine = LocationEngineProvider.getBestLocationEngine(this);
+//
+//        LocationEngineRequest request = new LocationEngineRequest.Builder(DEFAULT_INTERVAL_IN_MILLISECONDS)
+//                .setPriority(LocationEngineRequest.PRIORITY_HIGH_ACCURACY)
+//                .setMaxWaitTime(DEFAULT_MAX_WAIT_TIME).build();
+//
+//        locationEngine.requestLocationUpdates(request, callback, getMainLooper());
+//        locationEngine.getLastLocation(callback);
+//
+//    }
+//
+//    @SuppressLint("MissingSuperCall")
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        permissionsManager.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//    }
+//
+//    @Override
+//    public void onExplanationNeeded(List<String> permissionsToExplain) {
+//        Toast.makeText(this, "Permission Denied", Toast.LENGTH_LONG).show();
+//    }
+//
+//    @Override
+//    public void onPermissionResult(boolean granted) {
+//        if (granted) {
+//            mapboxMap.getStyle(new Style.OnStyleLoaded() {
+//                @Override
+//                public void onStyleLoaded(@NonNull Style style) {
+//                    enableLocationComponent(style);
+//                }
+//            });
+//        } else {
+//            Toast.makeText(this, "Permission Granted", Toast.LENGTH_LONG).show();
+//            finish();
+//        }
+//    }
+//
+//    @Override
+//    public void onMapReady(@NonNull final MapboxMap mapboxMap) {
+//        this.mapboxMap = mapboxMap;
+//
+//        mapboxMap.setStyle(Style.TRAFFIC_DAY,
+//                new Style.OnStyleLoaded() {
+//                    @Override public void onStyleLoaded(@NonNull Style style) {
+//                        enableLocationComponent(style);
+//                    }
+//                });
+//    }
+//
+//    private class LocationChangeListeningActivityLocationCallback
+//            implements LocationEngineCallback<LocationEngineResult> {
+//
+//        private final WeakReference<RiderDeliver> activityWeakReference;
+//
+//        LocationChangeListeningActivityLocationCallback(RiderDeliver activity) {
+//            this.activityWeakReference = new WeakReference<>(activity);
+//        }
+//
+//        /**
+//         * The LocationEngineCallback interface's method which fires when the device's location has changed.
+//         *
+//         * @param result the LocationEngineResult object which has the last known location within it.
+//         */
+//        @Override
+//        public void onSuccess(LocationEngineResult result) {
+//            RiderDeliver activity = activityWeakReference.get();
+//
+//            if (activity != null) {
+//                Location location = result.getLastLocation();
+//
+//                if (location == null) {
+//                    return;
+//                }
+//
+//                // Pass the new location to the Maps SDK's LocationComponent
+//                if (activity.mapboxMap != null && result.getLastLocation() != null) {
+//                    activity.mapboxMap.getLocationComponent().forceLocationUpdate(result.getLastLocation());
+//                    rLatitude = location.getLatitude();
+//                    rLongitude = location.getLongitude();
+//                    origin = Point.fromLngLat(rLongitude, rLatitude);
+//                }
+//            }
+//        }
+//
+//        /**
+//         * The LocationEngineCallback interface's method which fires when the device's location can't be captured
+//         *
+//         * @param exception the exception message
+//         */
+//        @Override
+//        public void onFailure(@NonNull Exception exception) {
+//            RiderDeliver activity = activityWeakReference.get();
+//            if (activity != null) {
+//                Toast.makeText(activity, exception.getLocalizedMessage(),
+//                        Toast.LENGTH_SHORT).show();
+//            }
+//        }
+//    }
+//
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        mapView.onStart();
+//    }
+//
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        mapView.onResume();
+//    }
+//
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        mapView.onPause();
+//    }
+//
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+//        mapView.onStop();
+//    }
+//
+//    @Override
+//    protected void onSaveInstanceState(Bundle outState) {
+//        super.onSaveInstanceState(outState);
+//        mapView.onSaveInstanceState(outState);
+//    }
+//
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        // Prevent leaks
+//        if (locationEngine != null) {
+//            locationEngine.removeLocationUpdates(callback);
+//        }
+//        mapView.onDestroy();
+//        navigation.onDestroy();
+//    }
+//
+//    @Override
+//    public void onLowMemory() {
+//        super.onLowMemory();
+//        mapView.onLowMemory();
+//    }
+//
+//    //END OF MAPBOX
 
 
 }
