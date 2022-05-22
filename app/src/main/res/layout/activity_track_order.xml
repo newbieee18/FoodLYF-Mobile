@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".TrackOrder">
 
     <ImageView
@@ -21,6 +22,7 @@
         android:id="@+id/swipelayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,6 +51,7 @@
                         android:alpha="0.5"
                         android:fontFamily="@font/chakra_petch_medium"
                         android:text="Rider is on the way"
+                        android:textSize="14dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/ivForDelivery"
                         app:layout_constraintTop_toBottomOf="@+id/txtForDelivery" />
@@ -64,7 +67,7 @@
                         android:fontFamily="@font/chakra_petch_medium"
                         android:text="For Delivery"
                         android:textColor="#000000"
-                        android:textSize="16sp"
+                        android:textSize="16dp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/ivProcessingOrder"
@@ -79,6 +82,7 @@
                         android:alpha="0.5"
                         android:fontFamily="@font/chakra_petch_medium"
                         android:text="Rider is on the way to store to pickup the order"
+                        android:textSize="14dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/ivOrderPickup"
                         app:layout_constraintTop_toBottomOf="@+id/txtOrderPickup" />
@@ -117,7 +121,7 @@
                         android:fontFamily="@font/chakra_petch_medium"
                         android:text="Order Pickup"
                         android:textColor="#000000"
-                        android:textSize="16sp"
+                        android:textSize="16dp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/ivOrderPickup"
@@ -132,6 +136,7 @@
                         android:alpha="0.5"
                         android:fontFamily="@font/chakra_petch_medium"
                         android:text="We are preparing your order"
+                        android:textSize="14dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/ivProcessingOrder"
                         app:layout_constraintTop_toBottomOf="@+id/txtProcessingOrder" />
@@ -159,7 +164,7 @@
                         android:fontFamily="@font/chakra_petch_medium"
                         android:text="Processing Order"
                         android:textColor="#000000"
-                        android:textSize="16sp"
+                        android:textSize="16dp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/ivProcessingOrder"
@@ -174,6 +179,7 @@
                         android:alpha="0.5"
                         android:fontFamily="@font/chakra_petch_medium"
                         android:text="Your order has been confirmed"
+                        android:textSize="14dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/ivOrderConfirmed"
                         app:layout_constraintTop_toBottomOf="@+id/txtOrderConfirmed" />
@@ -189,7 +195,7 @@
                         android:fontFamily="@font/chakra_petch_medium"
                         android:text="Order Confirmed"
                         android:textColor="#000000"
-                        android:textSize="16sp"
+                        android:textSize="16dp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/ivOrderConfirmed"
@@ -203,6 +209,7 @@
                         android:layout_marginEnd="32dp"
                         android:fontFamily="@font/chakra_petch_medium"
                         android:text="We have received your order"
+                        android:textSize="14dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/ivOrderPlaced"
                         app:layout_constraintTop_toBottomOf="@+id/txtOrderPlaced" />
@@ -317,7 +324,7 @@
                         android:fontFamily="@font/chakra_petch_medium"
                         android:text="Order Placed"
                         android:textColor="#000000"
-                        android:textSize="16sp"
+                        android:textSize="16dp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/ivOrderPlaced"
@@ -366,7 +373,7 @@
                         android:text="Please provide the QR code to the rider after receiving the order"
                         android:textAlignment="center"
                         android:textColor="#000000"
-                        android:textSize="14sp"
+                        android:textSize="14dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/ivForDelivery" />

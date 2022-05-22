@@ -1,6 +1,7 @@
 package com.example.projectmanagement;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -10,6 +11,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -34,6 +36,15 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.api.ResolvableApiException;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResponse;
+import com.google.android.gms.location.LocationSettingsStatusCodes;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.kosalgeek.android.photoutil.MainActivity;
 
 import org.json.JSONArray;
@@ -59,6 +70,8 @@ public class Payment extends AppCompatActivity implements LocationListener {
     int LOCATION_REFRESH_DISTANCE = 500; // 500 meters to update
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
+    private LocationRequest locationRequest;
+    private static final int REQUEST_CHECK_SETTINGS = 10001;
 
     @Override
     public void onBackPressed() {
@@ -117,7 +130,46 @@ public class Payment extends AppCompatActivity implements LocationListener {
             }
         });
 
+        locationRequest = LocationRequest.create();
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        locationRequest.setInterval(5000);
+        locationRequest.setFastestInterval(2000);
 
+        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
+                .addLocationRequest(locationRequest);
+        builder.setAlwaysShow(true);
+
+        Task<LocationSettingsResponse> result = LocationServices.getSettingsClient(getApplicationContext())
+                .checkLocationSettings(builder.build());
+
+        result.addOnCompleteListener(new OnCompleteListener<LocationSettingsResponse>() {
+            @Override
+            public void onComplete(@NonNull Task<LocationSettingsResponse> task) {
+
+                try {
+                    LocationSettingsResponse response = task.getResult(ApiException.class);
+                    //Toast.makeText(Payment.this, "GPS is already tured on", Toast.LENGTH_SHORT).show();
+
+                } catch (ApiException e) {
+
+                    switch (e.getStatusCode()) {
+                        case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
+
+                            try {
+                                ResolvableApiException resolvableApiException = (ResolvableApiException)e;
+                                resolvableApiException.startResolutionForResult(Payment.this,REQUEST_CHECK_SETTINGS);
+                            } catch (IntentSender.SendIntentException ex) {
+                                ex.printStackTrace();
+                            }
+                            break;
+
+                        case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
+                            //Device does not have location
+                            break;
+                    }
+                }
+            }
+        });
 
 //
 //        mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
@@ -514,4 +566,20 @@ public class Payment extends AppCompatActivity implements LocationListener {
     public void onProviderDisabled(@NonNull String provider) {
 
     }
+
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        if (requestCode == REQUEST_CHECK_SETTINGS) {
+//
+//            switch (resultCode) {
+//                case Activity.RESULT_OK:
+//                    Toast.makeText(this, "GPS is tured on", Toast.LENGTH_SHORT).show();
+//
+//                case Activity.RESULT_CANCELED:
+//                    Toast.makeText(this, "GPS required to be tured on", Toast.LENGTH_SHORT).show();
+//            }
+//        }
+//    }
 }

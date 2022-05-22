@@ -126,10 +126,10 @@
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_marginTop="70dp"
-                android:src="@drawable/ic_username"
+                android:src="@drawable/rider_image"
                 app:civ_border_color="#00ACC1"
                 app:civ_border_width="1dp"
-                app:civ_circle_background_color="#00ACC1"
+                app:civ_circle_background_color="#FFFFFF"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

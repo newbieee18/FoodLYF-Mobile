@@ -27,17 +27,17 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/flove"
         android:layout_centerHorizontal="true"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="0dp"
-        android:fontFamily="casual"
-        android:text="GO3J."
-        android:textSize="17sp"
+        android:layout_marginRight="5dp"
         android:autoSizeMaxTextSize="20sp"
         android:autoSizeMinTextSize="17sp"
         android:autoSizeStepGranularity="2sp"
         android:autoSizeTextType="uniform"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:textAlignment="center" />
+        android:fontFamily="casual"
+        android:text="GO3J."
+        android:textAlignment="center"
+        android:textSize="17dp" />
 
     <TextView
         android:id="@+id/flove"
@@ -45,17 +45,17 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="465dp"
-        android:fontFamily="@font/chosen_font"
-        android:text="FoodLYF"
-        android:textAlignment="center"
-        android:textSize="36sp"
+        android:layout_marginRight="5dp"
         android:autoSizeMaxTextSize="40sp"
         android:autoSizeMinTextSize="36sp"
         android:autoSizeStepGranularity="2sp"
         android:autoSizeTextType="uniform"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"/>
+        android:fontFamily="@font/chosen_font"
+        android:text="FoodLYF"
+        android:textAlignment="center"
+        android:textSize="36dp" />
 
     <ProgressBar
         style="?android:attr/progressBarStyle"

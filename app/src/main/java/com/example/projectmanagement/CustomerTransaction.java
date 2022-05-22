@@ -36,6 +36,7 @@ public class CustomerTransaction extends AppCompatActivity {
     List<OrderList> deliveredList;
     DeliveredOrdersAdapter deliveredOrdersAdapter;
     RecyclerView deliveredOrders;
+    TextView totalOrders, mTotal;
 
     @Override
     public void onBackPressed() {
@@ -53,6 +54,9 @@ public class CustomerTransaction extends AppCompatActivity {
 
         deliveredOrders = findViewById(R.id.deliveredOrders);
         deliveredList = new ArrayList<>();
+
+        totalOrders = findViewById(R.id.totalOrders);
+        mTotal = findViewById(R.id.total);
 
         getOrders();
 
@@ -106,6 +110,8 @@ public class CustomerTransaction extends AppCompatActivity {
         String branch_longitude = "";
         double total = 0;
         double distance = 0;
+        int tOrders = 0;
+        double fTotal = 0;
 
         try {
             JSONObject jsonObject = new JSONObject(response);
@@ -122,6 +128,8 @@ public class CustomerTransaction extends AppCompatActivity {
 
                 deliveredList.add(new OrderList(order_id, customer_phone, customer_name, customer_address, product_name, quantity, subtotal, latitude, longitude, store_name, branch_name, branch_latitude, branch_longitude, total, distance));
 
+                tOrders = result.length();
+                fTotal += subtotal;
             }
             Log.i("tagconvertstr", "["+result+"]");
         } catch (JSONException e) {
@@ -129,6 +137,17 @@ public class CustomerTransaction extends AppCompatActivity {
         }
 
         setOrders(deliveredList);
+
+
+
+        if(String.valueOf(tOrders).isEmpty() && String.valueOf(total).isEmpty()){
+            totalOrders.setText("Total Orders");
+            mTotal.setText("Total");
+        }
+        else{
+            totalOrders.setText("Total Orders\n" + String.valueOf(tOrders));
+            mTotal.setText(String.format("Total\n₱%.2f", fTotal));
+        }
 
     }
 }

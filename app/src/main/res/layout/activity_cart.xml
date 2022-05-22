@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".Cart">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -37,7 +38,7 @@
             android:fontFamily="@font/chakra_petch_medium"
             android:text="Cart"
             android:textColor="#FB8C00"
-            android:textSize="25sp"
+            android:textSize="25dp"
             android:textStyle="bold" />
 
     </androidx.cardview.widget.CardView>
@@ -47,6 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="32dp"
+        android:background="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/cvPayment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,7 +83,7 @@
             android:paddingRight="10dp"
             android:text="Proceed to Payment"
             android:textColor="#FFFFFF"
-            android:textSize="18sp"
+            android:textSize="18dp"
             android:textStyle="bold" />
     </androidx.cardview.widget.CardView>
 
