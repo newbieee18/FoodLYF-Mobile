@@ -45,7 +45,13 @@ public class StoreTab extends AppCompatActivity {
     String storeName, category;
     ImageView ivStore;
     CardView cvBurger, cvPasta, cvChicken, cvRm, cvFries, cvDaF, cvDrinks;
-    Button btnCart, btnBurger, btnPasta, btnChicken, btnRiceMeals, btnDaF, btnFries, btnDrinks;
+    Button btnCart, btnBurger, btnPasta, btnChicken, btnRiceMeals, btnDaF, btnFries, btnDrinks, btnChooseStore;
+
+    @Override
+    public void onBackPressed() {
+        return;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,8 +91,33 @@ public class StoreTab extends AppCompatActivity {
         cvDaF = findViewById(R.id.cvDaF);
         cvDrinks = findViewById(R.id.cvDrinks);
         btnDrinks = findViewById(R.id.btnDrinks);
+        btnChooseStore = findViewById(R.id.btnChooseStore);
 
         getStore();
+
+        btnChooseStore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String URL = "http://192.168.254.109/fadSystem/delete_to_choose.php?phone=" + phoneNumber;
+                StringRequest stringRequest1 = new StringRequest(URL, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Intent customerDashboard = new Intent(getApplicationContext(), DashboardCustomer.class);
+                        customerDashboard.putExtra("number", phoneNumber);
+                        startActivity(customerDashboard);
+                    }
+                },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Toast.makeText(StoreTab.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
+                            }
+                        });
+
+                RequestQueue requestQueue1 = Volley.newRequestQueue(StoreTab.this);
+                requestQueue1.add(stringRequest1);
+            }
+        });
 
         btnCart.setOnClickListener(new View.OnClickListener() {
             @Override

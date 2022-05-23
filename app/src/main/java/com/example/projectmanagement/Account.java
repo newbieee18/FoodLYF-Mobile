@@ -52,6 +52,7 @@ public class Account extends AppCompatActivity {
         Intent account = new Intent(getApplicationContext(), Account.class);
         account.putExtra("number", phoneNumber);
         startActivity(account);
+        finish();
     }
 
     @Override

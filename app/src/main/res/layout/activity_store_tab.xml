@@ -21,25 +21,6 @@
         app:shapeAppearanceOverlay="@style/ImageView.Corner"
         app:strokeColor="#000000" />
 
-    <Button
-        android:id="@+id/btnCart"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:autoSizeMaxTextSize="25sp"
-        android:autoSizeMinTextSize="20sp"
-        android:autoSizeStepGranularity="2sp"
-        android:autoSizeTextType="uniform"
-        android:background="@drawable/layout_bg1"
-        android:backgroundTint="#FB8C00"
-        android:drawableLeft="@drawable/ic_cart"
-        android:drawableTint="#FFFFFF"
-        android:paddingLeft="30dp"
-        android:text="Cart"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
     <LinearLayout
         android:id="@+id/linearLayout4"
         android:layout_width="0dp"
@@ -47,7 +28,7 @@
         android:elevation="10dp"
         android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/btnCart"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2">
@@ -300,6 +281,46 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout9"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#00ACC1"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btnChooseStore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="6"
+            android:background="@null"
+            android:fontFamily="@font/chakra_petch_medium"
+            android:text="Choose Other Store"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/btnCart"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:autoSizeMaxTextSize="25sp"
+            android:autoSizeMinTextSize="20sp"
+            android:autoSizeStepGranularity="2sp"
+            android:autoSizeTextType="uniform"
+            android:background="@drawable/layout_bg1"
+            android:backgroundTint="#FB8C00"
+            android:drawableLeft="@drawable/ic_cart"
+            android:drawableTint="#FFFFFF"
+            android:paddingLeft="30dp"
+            android:text="Cart"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

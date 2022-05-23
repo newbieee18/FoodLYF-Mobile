@@ -49,9 +49,7 @@ public class Cart extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent dashboard = new Intent(getApplicationContext(), DashboardCustomer.class);
-        dashboard.putExtra("number", phoneNumber);
-        startActivity(dashboard);
+        finish();
     }
 
     @Override

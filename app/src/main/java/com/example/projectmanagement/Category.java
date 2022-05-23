@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -93,6 +94,23 @@ public class Category extends AppCompatActivity {
                 productList.clear();
                 getProducts();
 
+                String URL = "http://192.168.254.109/fadSystem/delete_to_choose.php?phone=" + phoneNumber;
+                StringRequest stringRequest1 = new StringRequest(URL, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                    }
+                },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Toast.makeText(Category.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
+                            }
+                        });
+
+                RequestQueue requestQueue1 = Volley.newRequestQueue(Category.this);
+                requestQueue1.add(stringRequest1);
+
             }
         });
 
@@ -116,6 +134,23 @@ public class Category extends AppCompatActivity {
                 productList.clear();
                 getProducts();
 
+                String URL = "http://192.168.254.109/fadSystem/delete_to_choose.php?phone=" + phoneNumber;
+                StringRequest stringRequest1 = new StringRequest(URL, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                    }
+                },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Toast.makeText(Category.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
+                            }
+                        });
+
+                RequestQueue requestQueue1 = Volley.newRequestQueue(Category.this);
+                requestQueue1.add(stringRequest1);
+
             }
         });
 
@@ -138,6 +173,23 @@ public class Category extends AppCompatActivity {
                 cvMcdo.setCardBackgroundColor(Color.parseColor("#FB8C00"));
                 productList.clear();
                 getProducts();
+
+                String URL = "http://192.168.254.109/fadSystem/delete_to_choose.php?phone=" + phoneNumber;
+                StringRequest stringRequest1 = new StringRequest(URL, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                    }
+                },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Toast.makeText(Category.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
+                            }
+                        });
+
+                RequestQueue requestQueue1 = Volley.newRequestQueue(Category.this);
+                requestQueue1.add(stringRequest1);
 
             }
         });
