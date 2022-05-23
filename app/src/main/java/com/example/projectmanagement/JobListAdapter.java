@@ -44,7 +44,7 @@ public class JobListAdapter extends RecyclerView.Adapter<JobListAdapter.JobListV
         holder.phone.setText("Customer Contact#: " + jobs.getCustomerPhone());
         holder.total.setText(String.format("Total Price: ₱%.2f ", jobs.getTotal()));
         holder.location.setText(String.format("Branch Location Distance: %.2fkm", jobs.getDistance()));
-        holder.btnAcceptJob.setText("ACCEPT JOB");
+        holder.btnAcceptJob.setText("VIEW JOB");
 
         holder.btnAcceptJob.setOnClickListener(new View.OnClickListener() {
             @Override

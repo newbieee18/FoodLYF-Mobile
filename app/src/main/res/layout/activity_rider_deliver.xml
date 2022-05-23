@@ -31,7 +31,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView3"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -196,11 +196,12 @@
                     android:autoSizeStepGranularity="2sp"
                     android:autoSizeTextType="uniform"
                     android:background="@android:color/transparent"
-                    android:fontFamily="@font/arial"
+                    android:fontFamily="@font/chakra_petch_medium"
                     android:paddingRight="10dp"
                     android:text="Accept Job"
-                    android:textColor="#000000"
-                    android:textSize="17sp" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/btnContinue"
@@ -211,12 +212,13 @@
                     android:autoSizeStepGranularity="2sp"
                     android:autoSizeTextType="uniform"
                     android:background="@android:color/transparent"
-                    android:fontFamily="@font/arial"
+                    android:fontFamily="@font/chakra_petch_medium"
                     android:paddingRight="10dp"
                     android:text="Continue"
-                    android:textColor="#000000"
-                    android:visibility="invisible"
-                    android:textSize="17sp" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:visibility="invisible" />
 
             </androidx.cardview.widget.CardView>
 
@@ -225,14 +227,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:fontFamily="@font/arial"
-                android:text="Total"
-                android:textColor="#000000"
                 android:autoSizeMaxTextSize="22sp"
                 android:autoSizeMinTextSize="17sp"
                 android:autoSizeStepGranularity="2sp"
                 android:autoSizeTextType="uniform"
-                android:textSize="17sp"
+                android:fontFamily="@font/chakra_petch_medium"
+                android:text="Total"
+                android:textColor="#000000"
+                android:textSize="18dp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

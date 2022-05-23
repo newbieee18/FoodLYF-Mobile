@@ -42,7 +42,11 @@ public class TrackOrder extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        finish();
+
+        Intent intent = new Intent(getApplicationContext(), Account.class);
+        intent.putExtra("number", phoneNumber);
+        startActivity(intent);
+
     }
 
     @Override

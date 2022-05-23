@@ -138,6 +138,7 @@ public class RiderDeliver extends AppCompatActivity implements LocationListener 
             public void onClick(View v) {
 
                 //getRoute();
+                getLocation();
                 acceptOrder.setVisibility(View.INVISIBLE);
                 btnContinue.setVisibility(View.VISIBLE);
 
@@ -149,7 +150,28 @@ public class RiderDeliver extends AppCompatActivity implements LocationListener 
             public void onClick(View v) {
 
                 //getRoute1();
-                getLocation();
+
+                String url = "http://192.168.254.109/fadSystem/update_order2.php?customer_phone="+ customerPhone + "&status=Delivered";
+                StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        Intent intent = new Intent(getApplicationContext(), RiderJob.class);
+                        intent.putExtra("number", phoneNumber);
+                        startActivity(intent);
+
+                    }
+                },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Toast.makeText(RiderDeliver.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
+                            }
+                        });
+
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                requestQueue.add(stringRequest);
+
 
             }
         });
@@ -379,7 +401,7 @@ public class RiderDeliver extends AppCompatActivity implements LocationListener 
 
         final String rLatitude, rLongitude, status, customer_phone, rider_phone;
 
-        status = "Accepted by Rider";
+        status = "For Delivery";
         rLatitude = String.valueOf(latitude);
         rLongitude = String.valueOf(longitude);
         customer_phone = getIntent().getExtras().getString("customerPhone");;
