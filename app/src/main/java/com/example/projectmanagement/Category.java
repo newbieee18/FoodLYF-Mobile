@@ -2,20 +2,34 @@ package com.example.projectmanagement;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Base64;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -27,6 +41,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,10 +52,16 @@ public class Category extends AppCompatActivity {
     ArrayList<Product> productList;
     RecyclerView product_list;
     ProductsAdapter productsAdapter;
-    String storeName, category;
+    String category;
+    static String sName;
     Button btnJollibee, btnKFC, btnMcdo;
     CardView cvJollibee, cvKFC, cvMcdo;
     ImageView imageView;
+
+    String getStoreName(){
+        return sName; //This is the variable value I can't get.
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,11 +88,12 @@ public class Category extends AppCompatActivity {
         cvKFC = findViewById(R.id.cvKFC);
         cvMcdo = findViewById(R.id.cvMcdo);
         imageView = findViewById(R.id.imageView);
+        category = getIntent().getExtras().getString("category");
         product_list = findViewById(R.id.product_list);
         productList = new ArrayList<>();
-        category = getIntent().getExtras().getString("category");
 
-        storeName = "Jollibee";
+
+        sName = "Jollibee";
         getProducts();
 
         btnJollibee.setOnClickListener(new View.OnClickListener() {
@@ -87,7 +109,7 @@ public class Category extends AppCompatActivity {
                         loading.DismissLoading();
                     }
                 }, 3000);
-                storeName = "Jollibee";
+                sName = "Jollibee";
                 cvJollibee.setCardBackgroundColor(Color.parseColor("#00ACC1"));
                 cvKFC.setCardBackgroundColor(Color.parseColor("#FB8C00"));
                 cvMcdo.setCardBackgroundColor(Color.parseColor("#FB8C00"));
@@ -127,7 +149,7 @@ public class Category extends AppCompatActivity {
                         loading.DismissLoading();
                     }
                 }, 3000);
-                storeName = "Mcdo";
+                sName = "Mcdo";
                 cvJollibee.setCardBackgroundColor(Color.parseColor("#FB8C00"));
                 cvKFC.setCardBackgroundColor(Color.parseColor("#FB8C00"));
                 cvMcdo.setCardBackgroundColor(Color.parseColor("#00ACC1"));
@@ -167,7 +189,7 @@ public class Category extends AppCompatActivity {
                         loading.DismissLoading();
                     }
                 }, 3000);
-                storeName = "KFC";
+                sName = "KFC";
                 cvJollibee.setCardBackgroundColor(Color.parseColor("#FB8C00"));
                 cvKFC.setCardBackgroundColor(Color.parseColor("#00ACC1"));
                 cvMcdo.setCardBackgroundColor(Color.parseColor("#FB8C00"));
@@ -239,7 +261,7 @@ public class Category extends AppCompatActivity {
 
     private void getProducts() {
 
-        String url = Config.PRODUCT_URL + storeName + "&category=" + category;
+        String url = Config.PRODUCT_URL + sName + "&category=" + category;
         StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -291,5 +313,8 @@ public class Category extends AppCompatActivity {
         setProducts(productList);
 
     }
+
+
+
 
 }

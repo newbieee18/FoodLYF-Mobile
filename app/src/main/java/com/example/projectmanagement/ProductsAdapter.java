@@ -51,7 +51,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
     View chooseDrink;
     RadioGroup rgDrinks;
     Button btnClose, btnSave;
-    String fProductName;
+    String fProductName, product_name;
 
     public ProductsAdapter(Context mCtx, List<Product> productList) {
         this.mCtx = mCtx;
@@ -77,6 +77,8 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
         holder.productName.setText(product.getProductName());
         holder.productDesc.setText(product.getProductDesc());
         holder.productPrice.setText(String.format("₱%.2f", product.getProductPrice()));
+
+        product_name = product.getProductName();
 
         Intent intent = ((Activity) mCtx).getIntent();
         String phoneNumber = intent.getExtras().getString("number");
@@ -291,6 +293,10 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
         Intent intent = ((Activity) mCtx).getIntent();
         String phoneNumber = intent.getExtras().getString("number");
         String storeName = intent.getExtras().getString("storeName");
+        if(storeName == null){
+            Category cat = new Category();
+            storeName = cat.getStoreName();
+        }
         String url = Config.PRODUCT_URL + storeName + "&category=Drinks";
         StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
             @Override
@@ -354,7 +360,6 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
 
     }
 
