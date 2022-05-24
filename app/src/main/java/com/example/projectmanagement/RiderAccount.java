@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -35,6 +38,7 @@ public class RiderAccount extends AppCompatActivity {
     private final AppCompatActivity activity = RiderAccount.this;
     String phoneNumber, online;
     TextView FullName, Email, Logout;
+    ImageView ivShowImage;
 
     float x1, x2, y1, y2;
 
@@ -49,6 +53,7 @@ public class RiderAccount extends AppCompatActivity {
         FullName = findViewById(R.id.fullname);
         Email = findViewById(R.id.email);
         Logout = findViewById(R.id.logout);
+        ivShowImage = findViewById(R.id.ivShowImage);
 
         getData();
 
@@ -155,6 +160,7 @@ public class RiderAccount extends AppCompatActivity {
     private void showJSONS(String response) {
         String name = "";
         String email= "";
+        String image = "";
 
         try {
             JSONObject jsonObject = new JSONObject(response);
@@ -162,6 +168,7 @@ public class RiderAccount extends AppCompatActivity {
             JSONObject collegeData = result.getJSONObject(0);
             name = collegeData.getString(Config.FULLNAME1);
             email = collegeData.getString(Config.EMAIL1);
+            image = collegeData.getString("display_picture");
 
 
         } catch (JSONException e) {
@@ -170,6 +177,15 @@ public class RiderAccount extends AppCompatActivity {
 
         FullName.setText("" + name);
         Email.setText("" + email);
+        if(image.equals("")){
+            ivShowImage.setImageResource(R.drawable.rider_image);
+        }
+        else{
+            String imageUri = image;
+            byte[] decodedString = Base64.decode(imageUri, Base64.DEFAULT);
+            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+            ivShowImage.setImageBitmap(decodedByte);
+        }
 
     }
 

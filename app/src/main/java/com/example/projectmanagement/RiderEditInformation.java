@@ -35,7 +35,7 @@ public class RiderEditInformation extends AppCompatActivity {
     private final AppCompatActivity activity = RiderEditInformation.this;
     String phoneNumber;
     private Button btnSave;
-    ImageView back;
+    ImageView back, ivShowImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +49,7 @@ public class RiderEditInformation extends AppCompatActivity {
         birthdate = findViewById(R.id.birthdate);
         btnSave = findViewById(R.id.btnSave);
         back = findViewById(R.id.back);
+        ivShowImage = findViewById(R.id.ivShowImage);
 
         getData();
 
@@ -166,6 +167,7 @@ public class RiderEditInformation extends AppCompatActivity {
         String rEmail = "";
         String rGender = "";
         String rBirthdate = "";
+        String image = "";
 
         try {
             JSONObject jsonObject = new JSONObject(response);
@@ -175,6 +177,7 @@ public class RiderEditInformation extends AppCompatActivity {
             rEmail = collegeData.getString(Config.EMAIL1);
             rGender = collegeData.getString(Config.GENDER1);
             rBirthdate = collegeData.getString(Config.BIRTHDATE);
+            image = collegeData.getString("display_picture");
 
 
         } catch (JSONException e) {
@@ -185,6 +188,15 @@ public class RiderEditInformation extends AppCompatActivity {
         email.setText("" + rEmail);
         gender.setText("" + rGender);
         birthdate.setText("" + rBirthdate);
+        if(image.equals("")){
+            ivShowImage.setImageResource(R.drawable.rider_image);
+        }
+        else{
+            String imageUri = image;
+            byte[] decodedString = Base64.decode(imageUri, Base64.DEFAULT);
+            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+            ivShowImage.setImageBitmap(decodedByte);
+        }
 
     }
 

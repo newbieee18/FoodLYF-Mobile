@@ -64,20 +64,38 @@ public class ViewOrder extends AppCompatActivity {
         txtRiderName = findViewById(R.id.txtRiderName);
         txtGender = findViewById(R.id.txtGender);
         txtContactNumber =findViewById(R.id.txtContactNumber);
+
+        final Loading loading = new Loading(ViewOrder.this);
+        loading.startLoading();
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                loading.DismissLoading();
+            }
+        }, 3000);
+
         getItems();
 
         if(processOrder.getText().equals("PROCESS ORDER")) {
             processOrder.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            loading.DismissLoading();
+                        }
+                    }, 3000);
                     final String status = "Processing Order";
                     final String customer_phone = customerPhone;
                     final String branch_phone = phoneNumber;
 
                     if (!status.equals("")) {
-                        Handler handler = new Handler();
-                        handler.post(new Runnable() {
+                        Handler handler1 = new Handler();
+                        handler1.post(new Runnable() {
                             @Override
                             public void run() {
 
@@ -126,10 +144,21 @@ public class ViewOrder extends AppCompatActivity {
                                                                         if (putData.onComplete()) {
                                                                             String result = putData.getResult();
                                                                             if (result.equals("Record updated successfully")) {
+                                                                                final Loading loading = new Loading(ViewOrder.this);
+                                                                                loading.startLoading();
+
+                                                                                Handler handler = new Handler();
+                                                                                handler.postDelayed(new Runnable() {
+                                                                                    @Override
+                                                                                    public void run() {
+                                                                                        loading.DismissLoading();
+                                                                                    }
+                                                                                }, 3000);
                                                                                 processOrder.setText("NEXT ORDER");
                                                                                 processOrder.setOnClickListener(new View.OnClickListener() {
                                                                                     @Override
                                                                                     public void onClick(View v) {
+
                                                                                         Intent intent = new Intent(getApplicationContext(), Orders.class);
                                                                                         intent.putExtra("number", phoneNumber);
                                                                                         startActivity(intent);

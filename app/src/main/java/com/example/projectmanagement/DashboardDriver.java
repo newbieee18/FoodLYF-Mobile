@@ -13,6 +13,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.BounceInterpolator;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -59,7 +60,8 @@ public class DashboardDriver extends AppCompatActivity implements TaskLoadedCall
     private LocationEngine locationEngine;
     private LocationChangeListeningActivityLocationCallback callback =
             new LocationChangeListeningActivityLocationCallback(this);
-
+    LinearLayout linearLayout1;
+    TextView txtWelcome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +75,8 @@ public class DashboardDriver extends AppCompatActivity implements TaskLoadedCall
         phoneNumber = getIntent().getExtras().getString("number");
 
         online = findViewById(R.id.online);
+        linearLayout1 = findViewById(R.id.mLinearLayout);
+        txtWelcome = findViewById(R.id.txtWelcome);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.dashboard);
@@ -121,11 +125,15 @@ public class DashboardDriver extends AppCompatActivity implements TaskLoadedCall
                     mapView.onStart();
                     mapView.getMapAsync(DashboardDriver.this::onMapReady);
                     mapView.setVisibility(View.VISIBLE);
+                    txtWelcome.setVisibility(View.INVISIBLE);
+                    linearLayout1.setVisibility(View.INVISIBLE);
                 }
                 else {
                     online.setText("Offline");
                     mapView.onStop();
                     mapView.setVisibility(View.INVISIBLE);
+                    txtWelcome.setVisibility(View.VISIBLE);
+                    linearLayout1.setVisibility(View.VISIBLE);
                 }
 
             }

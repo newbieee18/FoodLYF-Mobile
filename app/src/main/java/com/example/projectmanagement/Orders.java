@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -41,6 +42,17 @@ public class Orders extends AppCompatActivity {
 
         orders = findViewById(R.id.orderList);
         orderList = new ArrayList<>();
+
+        final Loading loading = new Loading(Orders.this);
+        loading.startLoading();
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                loading.DismissLoading();
+            }
+        }, 3000);
 
         getOrders();
 
