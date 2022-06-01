@@ -18,6 +18,7 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -36,10 +37,11 @@ import org.json.JSONObject;
 public class ViewOrder extends AppCompatActivity {
 
     String phoneNumber, customerPhone, riderPhone;
-    TextView total, cName, cPhone, suggestion, txtRiderName, txtGender, txtContactNumber;
+    TextView total, cName, cPhone, suggestion, stat, statusDesc;
     TableLayout tableLayout;
     Button processOrder;
     CardView cardView;
+    ImageView ivShowImage;
 
     @Override
     public void onBackPressed() {
@@ -61,9 +63,9 @@ public class ViewOrder extends AppCompatActivity {
         cName = findViewById(R.id.customerName);
         cPhone = findViewById(R.id.customerPhone);
         suggestion = findViewById(R.id.suggestion);
-        txtRiderName = findViewById(R.id.txtRiderName);
-        txtGender = findViewById(R.id.txtGender);
-        txtContactNumber =findViewById(R.id.txtContactNumber);
+        stat = findViewById(R.id.status);
+        statusDesc = findViewById(R.id.statusDesc);
+        ivShowImage = findViewById(R.id.ivShowImage);
 
         final Loading loading = new Loading(ViewOrder.this);
         loading.startLoading();
@@ -82,13 +84,16 @@ public class ViewOrder extends AppCompatActivity {
             processOrder.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             loading.DismissLoading();
                         }
                     }, 3000);
+                    stat.setText("Processing Order");
+                    statusDesc.setText("Preparing order of customer");
+                    ivShowImage.setImageResource(R.drawable.processing_order);
+
                     final String status = "Processing Order";
                     final String customer_phone = customerPhone;
                     final String branch_phone = phoneNumber;
@@ -114,11 +119,26 @@ public class ViewOrder extends AppCompatActivity {
                                     if (putData.onComplete()) {
                                         String result = putData.getResult();
                                         if (result.equals("Record updated successfully")) {
+                                            handler.postDelayed(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    loading.DismissLoading();
+                                                }
+                                            }, 3000);
                                             processOrder.setText("PROCEED FOR PICKUP");
                                             if(processOrder.getText().equals("PROCEED FOR PICKUP")) {
                                                 processOrder.setOnClickListener(new View.OnClickListener() {
                                                     @Override
                                                     public void onClick(View v) {
+                                                        handler.postDelayed(new Runnable() {
+                                                            @Override
+                                                            public void run() {
+                                                                loading.DismissLoading();
+                                                            }
+                                                        }, 3000);
+                                                        stat.setText("READY FOR PICKUP");
+                                                        statusDesc.setText("Waiting for the rider to arive");
+                                                        ivShowImage.setImageResource(R.drawable.processing_order);
                                                         final String status = "Order Pickup";
                                                         final String customer_phone = customerPhone;
                                                         final String branch_phone = phoneNumber;

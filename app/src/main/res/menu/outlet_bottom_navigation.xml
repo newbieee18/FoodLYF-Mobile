@@ -9,9 +9,6 @@
         android:id="@+id/acceptOrder"
         android:icon="@drawable/ic_accept_job"
         android:title="Orders" />
-    <item
-        android:id="@+id/Account"
-        android:icon="@drawable/ic_username"
-        android:title="Account" />
+
 
 </menu>

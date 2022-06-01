@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -64,6 +65,7 @@ public class CustomerRegistration extends AppCompatActivity {
         action1 = findViewById(R.id.action1);
         progressBar = findViewById(R.id.progressBar);
 
+        mPhoneNumber1.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
 
         //make full transparent statusBar
         if (Build.VERSION.SDK_INT >= 19 && Build.VERSION.SDK_INT < 21) {
@@ -182,7 +184,7 @@ public class CustomerRegistration extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 final String phoneNumber;
-                                phoneNumber = mPhoneNumber1.getText().toString();
+                                phoneNumber = mPhoneNumber1.getText().toString().replaceAll("[^0-9]+", "");
 
                                 if (!phoneNumber.isEmpty() && !mOTP1.getText().toString().isEmpty()) {
                                     textInputLayoutPhoneNumber1.setError(null);

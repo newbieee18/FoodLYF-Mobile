@@ -91,7 +91,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="25dp"
                 android:fontFamily="@font/chakra_petch_medium"
-                android:text="Name"
+                android:text="@string/rider_name"
                 android:textColor="#00ACC1"
                 android:textSize="20sp" />
 
@@ -126,7 +126,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="25dp"
                 android:fontFamily="@font/chakra_petch_medium"
-                android:text="Gender"
+                android:text="@string/rider_gender"
                 android:textColor="#00ACC1"
                 android:textSize="20sp" />
 
@@ -150,7 +150,8 @@
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="25dp"
-                android:text="Date of Birth"
+                android:fontFamily="@font/chakra_petch_medium"
+                android:text="@string/rider_bdate"
                 android:textColor="#00ACC1"
                 android:textSize="20sp" />
 
@@ -186,7 +187,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="25dp"
                 android:fontFamily="@font/chakra_petch_medium"
-                android:text="Display Picture"
+                android:text="@string/rider_dp"
                 android:textColor="#00ACC1"
                 android:textSize="20sp" />
 
@@ -275,7 +276,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="25dp"
                 android:fontFamily="@font/chakra_petch_medium"
-                android:text="Driver's License"
+                android:text="@string/rider_dl"
                 android:textColor="#00ACC1"
                 android:textSize="20sp" />
 
@@ -346,7 +347,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="25dp"
                 android:fontFamily="@font/chakra_petch_medium"
-                android:text="TIN ID"
+                android:text="@string/rider_tid"
                 android:textColor="#00ACC1"
                 android:textSize="20sp" />
 
@@ -432,7 +433,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="25dp"
                 android:fontFamily="@font/chakra_petch_medium"
-                android:text="NBI"
+                android:text="@string/rider_nbi"
                 android:textColor="#00ACC1"
                 android:textSize="20sp" />
 
@@ -525,7 +526,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="25dp"
                     android:fontFamily="@font/chakra_petch_medium"
-                    android:text="Email"
+                    android:text="@string/rider_email"
                     android:textColor="#00ACC1"
                     android:textSize="20sp" />
 
@@ -578,7 +579,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="25dp"
                     android:fontFamily="@font/chakra_petch_medium"
-                    android:text="Name"
+                    android:text="@string/rider_rname"
                     android:textColor="#00ACC1"
                     android:textSize="20sp" />
 
@@ -613,7 +614,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="25dp"
                     android:fontFamily="@font/chakra_petch_medium"
-                    android:text="Relationship"
+                    android:text="@string/rider_relationship"
                     android:textColor="#00ACC1"
                     android:textSize="20sp" />
 
@@ -648,34 +649,59 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="25dp"
                     android:fontFamily="@font/chakra_petch_medium"
-                    android:text="Contact Number"
+                    android:text="@string/rider_contact"
                     android:textColor="#00ACC1"
                     android:textSize="20sp" />
 
-                <EditText
-                    android:id="@+id/contactNumber"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="30dp"
-                    android:background="@drawable/input_bg"
-                    android:drawableLeft="@drawable/ic_contact"
-                    android:drawablePadding="5dp"
-                    android:ems="10"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    android:fontFamily="@font/chakra_petch_medium"
-                    android:hint="09123456789"
-                    android:inputType="number"
-                    android:maxLength="11"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="5dp"
-                    android:paddingRight="10dp"
-                    android:paddingBottom="5dp"
-                    android:singleLine="true"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/countryCode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:background="@drawable/input_bg"
+                        android:editable="false"
+                        android:fontFamily="@font/chakra_petch_medium"
+                        android:hint="+63"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:singleLine="true"
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/contactNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/input_bg"
+                        android:drawableLeft="@drawable/ic_contact"
+                        android:drawablePadding="5dp"
+                        android:ems="10"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:fontFamily="@font/chakra_petch_medium"
+                        android:hint="(XXX) XXX-XXXX"
+                        android:inputType="phone"
+                        android:maxLength="14"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
 
             </LinearLayout>
 

@@ -9,6 +9,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -61,6 +62,7 @@ public class RiderApplication extends AppCompatActivity {
         action2 = findViewById(R.id.action2);
         progressBar = findViewById(R.id.progressBar);
 
+        mPhoneNumber2.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
 
         //make full transparent statusBar
         if (Build.VERSION.SDK_INT >= 19 && Build.VERSION.SDK_INT < 21) {
@@ -179,7 +181,7 @@ public class RiderApplication extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             final String phoneNumber;
-                            phoneNumber = mPhoneNumber2.getText().toString();
+                            phoneNumber = mPhoneNumber2.getText().toString().replaceAll("[^0-9]+", "");;
 
                             if (!phoneNumber.isEmpty() && !mOTP2.getText().toString().isEmpty()) {
                                 textInputLayoutPhoneNumber2.setError(null);

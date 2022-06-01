@@ -79,14 +79,6 @@ public class Orders extends AppCompatActivity {
                         overridePendingTransition(R.anim.slide_from_right, R.anim.slide_from_left);
                         return true;
                 }
-                switch (item.getItemId()){
-                    case R.id.Account:
-                        Intent account = new Intent(getApplicationContext(), OutletAccount.class);
-                        account.putExtra("number", phoneNumber);
-                        startActivity(account);
-                        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_from_left);
-                        return true;
-                }
                 return false;
             }
         });

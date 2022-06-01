@@ -8,27 +8,6 @@
     tools:context=".RiderDeliver">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:cardBackgroundColor="#EFEFEF"
-        app:cardCornerRadius="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView3">
-
-        <com.mapbox.mapboxsdk.maps.MapView
-            android:id="@+id/mapView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            mapbox:mapbox_cameraTargetLat="14.5567520218037"
-            mapbox:mapbox_cameraTargetLng="121.02572244702472"
-            mapbox:mapbox_cameraTilt="10"
-            mapbox:mapbox_cameraZoom="15" />
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
         android:id="@+id/cardView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

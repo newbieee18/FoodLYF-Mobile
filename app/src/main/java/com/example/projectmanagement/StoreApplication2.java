@@ -238,12 +238,6 @@ public class StoreApplication2 extends AppCompatActivity {
                 valid_id = encodedImage5;
                 halal_certificate = encodedImage6;
 
-                if(ivShowImage.getDrawable() == null) dti.setError("This is Required!");
-                if(ivShowImage1.getDrawable() == null) bp.setError("This is Required!");
-                if(ivShowImage2.getDrawable() == null) Form9.setError("This is Required!");
-                if(ivShowImage4.getDrawable() == null) Form49.setError("This is Required!");
-                if(ivShowImage5.getDrawable() == null) vid.setError("This is Required!");
-                if(ivShowImage6.getDrawable() == null) hc.setError("This is Required!");
                 if(ivShowImage3.getDrawable() == null) form13 = "null";
                 if(ivShowImage3.getDrawable() != null) form13 = encodedImage3;
 

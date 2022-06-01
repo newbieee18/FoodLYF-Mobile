@@ -7,4 +7,38 @@
 
     <string name="mapbox_access_token">pk.eyJ1IjoiZm9vZGx5ZiIsImEiOiJja3RvMGkyM2cwN3htMzFyemlxNjVucTMxIn0.-zyhQunYloq9HNypNIaIVQ</string>
 
+    <!--RIDER REGISTRATION-->
+    <string name="rider_name">Rider Name<font color='#FF0000'>*</font></string>
+    <string name="rider_gender">Gender<font color='#FF0000'>*</font></string>
+    <string name="rider_bdate">Date of Birth<font color='#FF0000'>*</font></string>
+    <string name="rider_dp">Display Picture<font color='#FF0000'>*</font></string>
+    <string name="rider_dl">Driver"'"s License<font color='#FF0000'>*</font></string>
+    <string name="rider_tid">TIN ID<font color='#FF0000'>*</font></string>
+    <string name="rider_nbi">NBI<font color='#FF0000'>*</font></string>
+    <string name="rider_email">Email<font color='#FF0000'>*</font></string>
+    <string name="rider_rname">Contact Person Name<font color='#FF0000'>*</font></string>
+    <string name="rider_relationship">Relationship<font color='#FF0000'>*</font></string>
+    <string name="rider_contact">Contact Number<font color='#FF0000'>*</font></string>
+
+    <!--CUSTOMER REGISTRATION-->
+    <string name="customer_name">Customer Name<font color='#FF0000'>*</font></string>
+    <string name="customer_address">Address<font color='#FF0000'>*</font></string>
+    <string name="customer_email">Email Address<font color='#FF0000'>*</font></string>
+
+    <!--STORE REGISTRATION-->
+    <string name="store_bn">Business Name<font color='#FF0000'>*</font></string>
+    <string name="store_title">Title<font color='#FF0000'>*</font></string>
+    <string name="store_mba">Main Business Address<font color='#FF0000'>*</font></string>
+    <string name="store_city">City<font color='#FF0000'>*</font></string>
+    <string name="store_no">No. of Outlet<font color='#FF0000'>*</font></string>
+    <string name="store_mname">Merchant Name<font color='#FF0000'>*</font></string>
+    <string name="store_mp">Mobile Phone<font color='#FF0000'>*</font></string>
+    <string name="store_email">Email Address<font color='#FF0000'>*</font></string>
+    <string name="store_dti">DTI Certification<font color='#FF0000'>*</font></string>
+    <string name="store_bp">Business Permit<font color='#FF0000'>*</font></string>
+    <string name="store_f9">Form 9<font color='#FF0000'>*</font></string>
+    <string name="store_f49">Form 49<font color='#FF0000'>*</font></string>
+    <string name="store_vid">Valid ID<font color='#FF0000'>*</font></string>
+    <string name="store_halal">Halal Certificate<font color='#FF0000'>*</font></string>
+
 </resources>

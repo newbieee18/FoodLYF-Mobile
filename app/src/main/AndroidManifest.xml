@@ -43,7 +43,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:label">
-        <activity android:name=".RiderTransaction"></activity>
+        <activity android:name=".Scanner"></activity>
+        <activity android:name=".RiderTransaction" />
         <activity android:name=".CustomerTransaction" />
         <activity android:name=".RiderEditInformation" />
         <activity android:name=".TrackOrder" />

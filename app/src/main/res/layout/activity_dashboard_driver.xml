@@ -13,22 +13,7 @@
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/frameLayout">
-
-        <TextView
-            android:id="@+id/txtWelcome"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/chakra_petch_medium"
-            android:gravity="center"
-            android:text="Hello Rider! Keep Safe."
-            android:textColor="#FB8C00"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView6"
@@ -64,184 +49,148 @@
         </androidx.cardview.widget.CardView>
 
         <LinearLayout
-            android:id="@+id/mLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="24dp"
-            android:layout_weight="1"
-            android:gravity="center"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardView6">
 
             <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:padding="10dp"
-                app:cardCornerRadius="10dp">
+                mapbox:cardBackgroundColor="#fa6"
+                mapbox:cardCornerRadius="10dp"
+                mapbox:cardElevation="2dp">
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/txt1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="#FB8C00"
-                    android:elevation="5dp"
-                    android:orientation="vertical">
+                    android:layout_marginTop="50dp"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/chakra_petch_medium"
+                    android:gravity="center"
+                    android:text="Total Delivered"
+                    android:textAlignment="center"
+                    android:textColor="#F1EEEE"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/txtDelivered"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginRight="5dp"
-                        android:background="#00ACC1"
-                        android:elevation="5dp"
-                        android:fontFamily="@font/chakra_petch_medium"
-                        android:gravity="center"
-                        android:padding="5dp"
-                        android:text="5"
-                        android:textColor="#FFFFFF"
-                        android:textSize="30dp"
-                        android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/totalDelivered"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/chakra_petch_medium"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="35dp"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/txtD"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:fontFamily="@font/chakra_petch_medium"
-                        android:gravity="center"
-                        android:text="Delivered"
-                        android:textColor="#FFFFFF"
-                        android:textSize="18dp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
-                app:cardCornerRadius="10dp">
+                mapbox:cardBackgroundColor="#fa6"
+                mapbox:cardCornerRadius="10dp"
+                mapbox:cardElevation="2dp">
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/txt2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="#FB8C00"
-                    android:elevation="5dp"
-                    android:orientation="vertical">
+                    android:layout_marginTop="50dp"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/chakra_petch_medium"
+                    android:gravity="center"
+                    android:text="Today's Delivered"
+                    android:textAlignment="center"
+                    android:textColor="#F1EEEE"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/txtAvailableOrders"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginRight="5dp"
-                        android:background="#00ACC1"
-                        android:elevation="5dp"
-                        android:fontFamily="@font/chakra_petch_medium"
-                        android:gravity="center"
-                        android:padding="5dp"
-                        android:text="5"
-                        android:textColor="#FFFFFF"
-                        android:textSize="30dp"
-                        android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/deliveredToday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/chakra_petch_medium"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="35dp"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/txtAO"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:fontFamily="@font/chakra_petch_medium"
-                        android:gravity="center"
-                        android:text="Available\nOrders"
-                        android:textColor="#FFFFFF"
-                        android:textSize="18dp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
-                app:cardCornerRadius="10dp">
+                mapbox:cardBackgroundColor="#fa6"
+                mapbox:cardCornerRadius="10dp"
+                mapbox:cardElevation="2dp">
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/txt3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="#FB8C00"
-                    android:elevation="5dp"
-                    android:orientation="vertical">
+                    android:layout_marginTop="50dp"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/chakra_petch_medium"
+                    android:gravity="center"
+                    android:text="Available Orders"
+                    android:textAlignment="center"
+                    android:textColor="#F1EEEE"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/txtOverallIncome"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginRight="5dp"
-                        android:background="#00ACC1"
-                        android:elevation="5dp"
-                        android:fontFamily="@font/chakra_petch_medium"
-                        android:gravity="center"
-                        android:padding="5dp"
-                        android:text="₱300.00"
-                        android:textColor="#FFFFFF"
-                        android:textSize="20dp"
-                        android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/availableOrders"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/chakra_petch_medium"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="35dp"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/txtOI"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:fontFamily="@font/chakra_petch_medium"
-                        android:gravity="center"
-                        android:text="Overall\nIncome"
-                        android:textColor="#FFFFFF"
-                        android:textSize="18dp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
             </androidx.cardview.widget.CardView>
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtWelcome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/chakra_petch_medium"
+            android:gravity="center"
+            android:text="Hello Rider! Keep Safe."
+            android:textColor="#FB8C00"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <FrameLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView">
-
-        <com.mapbox.mapboxsdk.maps.MapView
-            android:id="@+id/mapView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="invisible"
-            mapbox:mapbox_cameraTargetLat="14.5567520218037"
-            mapbox:mapbox_cameraTargetLng="121.02572244702472"
-            mapbox:mapbox_cameraTilt="10"
-            mapbox:mapbox_cameraZoom="15" />
-
-    </FrameLayout>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -255,21 +204,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <Switch
-                android:id="@+id/online"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="24dp"
-                android:fontFamily="@font/chakra_petch_medium"
-                android:text="Offline"
-                android:textOff="OFF"
-                android:textOn="ON"
-                android:textSize="17sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -279,7 +213,7 @@
                 android:text="FoodLYF"
                 android:textAlignment="center"
                 android:textColor="#FB8C00"
-                android:textSize="30sp"
+                android:textSize="30dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

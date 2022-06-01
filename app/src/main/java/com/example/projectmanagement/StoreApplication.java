@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -61,6 +62,8 @@ public class StoreApplication extends AppCompatActivity {
         fadeOut.setInterpolator(new AccelerateInterpolator()); //and this
         fadeOut.setDuration(1000);
 
+        mPhone.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
+
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,25 +85,25 @@ public class StoreApplication extends AppCompatActivity {
             public void onClick(View v) {
 
                 if(businessName.getText().toString().equals(""))
-                    businessName.setError("This is Required!");
+                    businessName.setError("Enter Business Name");
 
                 if(title.getText().toString().equals(""))
-                    title.setError("This is Required!");
+                    title.setError("Enter Title");
 
                 if(mAddress.getText().toString().equals(""))
-                    mAddress.setError("This is Required!");
+                    mAddress.setError("Enter Main Business Address");
 
                 if(city.getText().toString().equals(""))
-                    city.setError("This is Required!");
+                    city.setError("Enter City");
 
                 if(outlet.getText().toString().equals(""))
-                    outlet.setError("This is Required!");
+                    outlet.setError("Enter Outlet");
 
                 if(name.getText().toString().equals(""))
-                    name.setError("This is Required!");
+                    name.setError("Enter Merchant");
 
                 if(mPhone.getText().toString().equals(""))
-                    mPhone.setError("This is Required!");
+                    mPhone.setError("Enter Mobile Phone");
 
                 if(eAddress.getText().toString().equals("") || !isValidEmail(eAddress.getText().toString().trim()))
                     eAddress.setError("Invalid Email!");
@@ -109,6 +112,8 @@ public class StoreApplication extends AppCompatActivity {
                 && !outlet.getText().toString().equals("") && !name.getText().toString().equals("") && !mPhone.getText().toString().equals("")
                 && isValidEmail(eAddress.getText().toString().trim())) {
 
+                    String mphone = mPhone.getText().toString().replaceAll("[^0-9]+", "");
+
                     Intent storeApplication2 = new Intent(getApplicationContext(), StoreApplication2.class);
                     storeApplication2.putExtra("businessName", businessName.getText().toString());
                     storeApplication2.putExtra("title", title.getText().toString());
@@ -116,7 +121,7 @@ public class StoreApplication extends AppCompatActivity {
                     storeApplication2.putExtra("city", city.getText().toString());
                     storeApplication2.putExtra("outlet", outlet.getText().toString());
                     storeApplication2.putExtra("name", name.getText().toString());
-                    storeApplication2.putExtra("mPhone", mPhone.getText().toString());
+                    storeApplication2.putExtra("mPhone", mphone);
                     storeApplication2.putExtra("eAddress", eAddress.getText().toString());
                     startActivity(storeApplication2);
 

@@ -78,7 +78,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:fontFamily="@font/chakra_petch_medium"
-                android:text="DTI Certification"
+                android:text="@string/store_dti"
                 android:textColor="#00ACC1"
                 android:textSize="20sp" />
 
@@ -154,7 +154,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:fontFamily="@font/chakra_petch_medium"
-                android:text="Business Permit"
+                android:text="@string/store_bp"
                 android:textColor="#00ACC1"
                 android:textSize="20sp" />
 
@@ -229,7 +229,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:fontFamily="@font/chakra_petch_medium"
-                android:text="Form 9"
+                android:text="@string/store_f9"
                 android:textColor="#00ACC1"
                 android:textSize="20sp" />
 
@@ -385,7 +385,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:fontFamily="@font/chakra_petch_medium"
-                android:text="Form 49"
+                android:text="@string/store_f49"
                 android:textColor="#00ACC1"
                 android:textSize="20sp" />
 
@@ -461,7 +461,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/chakra_petch_medium"
-                android:text="Valid ID"
+                android:text="@string/store_vid"
                 android:textColor="#00ACC1"
                 android:textSize="20sp" />
 
@@ -538,7 +538,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/chakra_petch_medium"
-                android:text="Halal Certificate"
+                android:text="@string/store_halal"
                 android:textColor="#00ACC1"
                 android:textSize="20sp" />
 

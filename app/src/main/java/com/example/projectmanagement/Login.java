@@ -13,6 +13,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.content.Intent;
 import android.os.Handler;
+import android.telephony.PhoneNumberFormattingTextWatcher;
+import android.telephony.PhoneNumberUtils;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -155,6 +157,7 @@ public class Login extends AppCompatActivity {
         action.setAnimation(bottomAnim);
         signup.setAnimation(bottomAnim);
 
+        mPhoneNumber.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -310,7 +313,7 @@ public class Login extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             final String phoneNumber;
-                            phoneNumber = mPhoneNumber.getText().toString();
+                            phoneNumber = mPhoneNumber.getText().toString().replaceAll("[^0-9]+", "");
 
                             if (!mPhoneNumber.equals("") && !mOTP.equals("")) {
                                 Handler handler = new Handler();

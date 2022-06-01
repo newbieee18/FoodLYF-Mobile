@@ -19,6 +19,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.telephony.PhoneNumberFormattingTextWatcher;
+import android.telephony.PhoneNumberUtils;
 import android.util.Base64;
 import android.view.View;
 import android.view.Window;
@@ -92,6 +94,9 @@ public class RiderApplication1 extends AppCompatActivity {
         riderBirthDate = findViewById(R.id.riderBirthDate);
         riderEmail = findViewById(R.id.riderEmail);
         riderGender = findViewById(R.id.riderGender);
+
+        contactNumber.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
+
         String[] genderList = {"Male", "Female"};
 
         adapter = new ArrayAdapter(this, R.layout.spinner_item, genderList);
@@ -208,19 +213,14 @@ public class RiderApplication1 extends AppCompatActivity {
                 tin = encodedImage3;
                 contact_person = contactName.getText().toString();
                 person_relationship = contactRelationship.getText().toString();
-                person_number = contactNumber.getText().toString();
+                person_number = contactNumber.getText().toString().replaceAll("[^0-9]+", "");;
 
-                if(fullname.equals("")) riderName.setError("This is Required!");
-                if(birth_date.equals("")) riderBirthDate.setError("This is Required!");
-                if(email.equals("") || !isValidEmail(email)) riderEmail.setError("Invalid Email!");
-                if(contactName.getText().toString().equals("")) contactName.setError("This is Required!");
-                if(person_relationship.equals("")) contactRelationship.setError("This is Required!");
-                if(person_number.equals("")) contactNumber.setError("This is Required!");
-                if(ivShowImage.getDrawable() == null) dp.setError("This is Required!");
-                if(ivShowImage1.getDrawable() == null) dl.setError("This is Required!");
-                if(ivShowImage2.getDrawable() == null) Nbi.setError("This is Required!");
-                if(ivShowImage3.getDrawable() == null) Tin.setError("This is Required");
-
+                if(fullname.equals("")) riderName.setError("Please input your name");
+                if(birth_date.equals("")) riderBirthDate.setError("Please input your birthdate");
+                if(email.equals("") || !isValidEmail(email)) riderEmail.setError("Invalid Email");
+                if(contactName.getText().toString().equals("")) contactName.setError("Please input contact person name");
+                if(person_relationship.equals("")) contactRelationship.setError("Please input relationship");
+                if(person_number.equals("")) contactNumber.setError("Please enter contact number");
 
                 if(!phone.equals("") && !fullname.equals("") && !gender.equals("") && !birth_date.equals("") && !email.equals("") && isValidEmail(email)
                         && ivShowImage.getDrawable() != null && ivShowImage1.getDrawable() != null && ivShowImage2.getDrawable() != null

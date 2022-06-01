@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.maps.model.Dash;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.mapbox.android.core.location.LocationEngine;
 import com.mapbox.android.core.location.LocationEngineCallback;
 import com.mapbox.android.core.location.LocationEngineProvider;
@@ -71,14 +73,6 @@ public class DashboardOutlets extends AppCompatActivity implements TaskLoadedCal
                         overridePendingTransition(R.anim.slide_from_right, R.anim.slide_from_left);
                         return true;
                 }
-                switch (item.getItemId()){
-                    case R.id.Account:
-                        Intent account = new Intent(getApplicationContext(), OutletAccount.class);
-                        account.putExtra("number", phoneNumber);
-                        startActivity(account);
-                        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_from_left);
-                        return true;
-                }
                 return false;
             }
         });
@@ -110,4 +104,15 @@ public class DashboardOutlets extends AppCompatActivity implements TaskLoadedCal
         }
         return false;
     }
+
+    public void logoutClicked(View view){
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = mAuth.getCurrentUser();
+        FirebaseAuth.getInstance().signOut();
+        Intent login = new Intent(getApplicationContext(), SplashScreen.class);
+        login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(login);
+    }
+
 }
